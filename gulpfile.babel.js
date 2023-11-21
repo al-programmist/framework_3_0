@@ -5,9 +5,9 @@ import { fontsBuild, fontsWatch } from './gulp/tasks/fonts';
 import { copyBuild, copyWatch } from './gulp/tasks/copy';
 import { favgenerate, favupdate } from "./gulp/tasks/favicon";
 import { spriteBuild, spriteWatch } from './gulp/tasks/sprites';
+import { imagesBuild, imagesWatch } from './gulp/tasks/images';
 // import { pugBuild, pugWatch } from './gulp/tasks/pug';
 // import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
-// import { imagesBuild, imagesWatch } from './gulp/tasks/images';
 import { config } from './gulp/config';
 
 config.setEnv();
@@ -28,11 +28,11 @@ export const build = series(
 	parallel(
 		// fontsBuild,
 		// copyBuild,
-		spriteBuild,
+		// spriteBuild,
+		imagesBuild,
 		//----------------
 		// pugBuild,
 		// scriptsBuild,
-		// imagesBuild,
 	),
 );
 
@@ -45,10 +45,10 @@ export const dev = series(
 	parallel(
 		// fontsWatch,
 		// copyWatch,
-		spriteWatch,
+		// spriteWatch,
+		imagesWatch,
 		//------------
 		// pugWatch,
 		// scriptsWatch,
-		// imagesWatch,
 	),
 );
