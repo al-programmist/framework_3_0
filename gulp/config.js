@@ -40,7 +40,7 @@ export const config = {
 		src: `${sourcePath}/assets/icons/`,
 		dest: `${destPath}/images`,
 		watch: `${sourcePath}/assets/icons/**/*.svg`,
-		icons: `${sourcePath}/config/styles/_icons.styl`,
+		icons: `${sourcePath}/config/styles/_icons.scss`,
 	},
 
 	copy: {

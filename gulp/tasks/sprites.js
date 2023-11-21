@@ -93,19 +93,25 @@ const spriteBuild = (done) => {
 					const iconName = path.basename(fileName).replace('.svg','');
 
 					const iconMono =
-						`\n.icon--${dir}-${iconName}\n` + 
-							`\t&::before\n` + 
-								`\t\tbackground-color: currentcolor\n` + 
-								`\t\t-webkit-mask-image: url('../images/sprite-${dir}.svg#${iconName}')\n` + 
-								`\t\t-webkit-mask-repeat: no-repeat\n` + 
-								`\t\tmask-repeat: no-repeat\n` + 
-								`\t\tmask-image: url('../images/sprite-${dir}.svg#${iconName}')\n`;
-					const iconMulti = 
-						`\n.icon--${dir}-${iconName}\n` + 
-							`\t&::before\n` + 
-								`\t\tbackground-color: transparent\n` + 
-								`\t\tbackground-repeat: no-repeat\n` + 
-								`\t\tbackground-image: url('../images/sprite-${dir}.svg#${iconName}')\n`;
+						`\n.icon--${dir}-${iconName}  {\n` +
+							`\t&::before {\n` +
+								`\t\tbackground-color: currentcolor;\n` +
+								`\t\t-webkit-mask-image: url('../images/sprite-${dir}.svg#${iconName}');\n` +
+								`\t\t-webkit-mask-repeat: no-repeat;\n` +
+								`\t\tmask-position: center center;\n` +
+								`\t\tmask-repeat: no-repeat;\n` +
+								`\t\tmask-image: url('../images/sprite-${dir}.svg#${iconName}');\n` +
+							`\t };\n` +
+						`};\n`;
+					const iconMulti =
+						`\n.icon--${dir}-${iconName} { \n` +
+							`\t&::before {\n` +
+								`\t\tbackground-color: transparent;\n` +
+								`\t\tbackground-repeat: no-repeat;\n` +
+								`\t\tbackground-position: center center;\n` +
+								`\t\tbackground-image: url('../images/sprite-${dir}.svg#${iconName}');\n` +
+							`\t };\n` +
+							`};\n`;
 
 					let value = (dir === 'mono')
 						? iconMono
