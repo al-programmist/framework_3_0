@@ -1,0 +1,13 @@
+mixin cardInspiration(data)
+	-
+		data.classname = 'card--inspiration'
+	if (data)
+		.card-inspiration.card__wrapper.js-card-inspiration&attributes(attributes)
+			.card-wrapper
+				button.inspiration-locator__open.js-inspiration-button.js-inspiration-button--open(type="button", data-index=index, aria-label="Закрыть подборку")
+					+icon('round-button-icon')
+			button.card-inspiration-close.js-close(type="button", aria-label="Закрыть подборку")
+				+icon('close')
+			+card(data)
+
+						

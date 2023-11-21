@@ -1,0 +1,162 @@
+/* stylelint-disable value-keyword-case */
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable color-hex-length */
+/* stylelint-disable property-no-unknown */
+
+// Цвета
+$color = {
+	primary: #333,
+	primary-hover: #FFEE02,
+	primary-active: #FFEE02,
+	primary-disabled: #71B6EF,
+	primary-yellow: #FFEE02,
+	primary-white: #FFF,
+	primary-red: #AE2320,
+	primary-green: #038100,
+	primary-blue: #2D9CDB,
+	
+	option: {
+		orange: #F0801E,
+		light-orange: #FFECDD,
+		dark-gray: #A3A3A3,
+		gray: #EFEFEF,
+		red: #E31E25,
+	}
+
+	text: {
+		primary: #333,
+	},
+	
+	background: {
+		primary: #fff,
+	},
+	
+	gradient: {
+		primary: linear-gradient(180deg, #FFEE02 0%, #F0801E 100%),
+		reverse: linear-gradient(0deg, #FFEE02 0%, #F0801E 100%),
+		red: linear-gradient(180deg, #FF1700 0%, #550E00 100%),
+	}
+	
+
+	line: {
+		primary: #DDE3E8,
+		secondary: #C8D1DA,
+		alternate: #ECE2C8,
+		danger: #F2D9DC,
+		light: #E2E2E2,
+	},
+
+	button: {
+		background: #333,
+		border: #333,
+		background-hover: #595959,
+		border-hover: #595959,
+		background-active: #595959,
+		border-active: #595959,
+	}
+}
+
+:root
+	--color-primary: $color.primary
+	--color-primary-hover: $color.primary-hover
+	--color-primary-active: $color.primary-active
+	--color-primary-disabled: $color.primary-disabled
+	--color-primary-yellow: $color.primary-yellow
+	--color-primary-white: $color.primary-white
+	--color-primary-red: $color.primary-red
+	--color-primary-green: $color.primary-green
+	--color-primary-blue: $color.primary-blue
+	--color-option-orange: $color.option.orange
+	--color-option-light-orange: $color.option.light-orange
+	--color-option-dark-gray: $color.option.dark-gray
+	--color-option-gray: $color.option.gray
+	--color-option-red: $color.option.red
+	--color-background-primary: $color.background.primary
+	--color-gradient-primary: $color.gradient.primary
+	--color-gradient-red: $color.gradient.red
+	--color-line-primary: $color.line.primary
+	--color-line-secondary: $color.line.secondary
+	--color-line-alternate: $color.line.alternate
+	--color-line-danger: $color.line.danger
+	--color-line-light: $color.line.light
+	--color-button-background: $color.button.background
+	--color-button-border: $color.button.border
+	--color-button-background-hover: $color.button.background-hover
+	--color-button-border-hover: $color.button.border-hover
+	--color-button-background-active: $color.button.background-active
+	--color-button-border-active: $color.button.border-active
+	--color-basic-yellow: #FFEE02
+
+// Типографика
+$font = {
+	size: {
+		mobile: 12,
+		tablet: 18,
+		// desktop: 
+		
+		section-header: {
+			mobile: 24,
+			tablet: 24,
+			desktop: 32 
+		}
+	},
+	line-height: normal,
+	weight: 400,
+	
+	family: {
+		primary: SegoeUI + ', ' + Arial + ', ' + sans-serif
+	}
+}
+
+:root
+	--font-size-mobile: ($font.size.mobile)px
+	--font-size-tablet: ($font.size.tablet)px
+	--font-size-section-header-mobile: $font.size.section-header.mobile
+	--font-size-section-header-tablet: $font.size.section-header.tablet
+	--font-size-section-header-desktop: $font.size.section-header.desktop
+	--font-family-primary: $font.family.primary
+
+// Размеры
+$size = {
+	padding: {
+		desktop: 40px,
+		tablet: 19px,
+		mobile: 16px
+	},
+	container: {
+		primary: 1200px
+		small: 1024px
+	}
+}
+
+:root
+	--size-padding-desktop: $size.padding.desktop
+	--size-padding-tablet: $size.padding.tablet
+	--size-padding-mobile: $size.padding.mobile
+	--size-container-primary: $size.container.primary
+	--size-container-small: $size.container.small
+
+// Брейкпоинты
+$breakpoint = {
+	mobile: 480px,
+	tablet: 768px,
+	laptop: 992px,
+	desktop: 1280px,
+	large: $size.container.primary + $size.padding.desktop * 2
+}
+
+// Трансформации и анимации
+$transition = {
+	primary: .2s ease-in-out,
+	field: .2s ease-in-out
+}
+
+:root
+	--transition-primary: $transition.primary
+	--transition-field: $transition.field
+
+// Тени
+// stylelint-disable
+:root
+	--shadow-1: 0 0 10px rgba(163, 163, 163, 0.3)
+// stylelint-enable

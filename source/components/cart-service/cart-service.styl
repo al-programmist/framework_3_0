@@ -1,0 +1,27 @@
+.cart-service
+	display: flex
+	gap: 24px
+
+	font-weight: 600
+	font-size: 14px
+
+	&__item
+		display: flex
+		gap: 10px
+		align-items: center
+
+		+before()
+			width: 16px
+			height: 16px
+
+			background-color: currentcolor
+			mask-image: var(--before-mask-image)
+			mask-repeat: no-repeat
+			mask-position: center
+			mask-size: cover
+
+		&--print
+			--before-mask-image: $maskImage(print, mono)
+
+		&--save
+			--before-mask-image: $maskImage(file, mono)

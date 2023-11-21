@@ -1,0 +1,8 @@
+include /components/checkout-pickup/checkout-pickup-item/checkout-pickup-item
+
+mixin checkoutPickupBubble
+	+checkoutPickupItem({
+		name: 'Управдом ТЦ «Азбука ремонта»',
+		schedule: 'Открыто до 22:00',
+		address: 'ул. Молодёжная, д. 107Б, оф. 111, ТЦ «Азбука ремонта»',
+	}, { tag: 'div' }).checkout-pickup-bubble

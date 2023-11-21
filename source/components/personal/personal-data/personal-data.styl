@@ -1,0 +1,61 @@
+.personal-data
+	+media(desktop)
+		padding: 32px 32px 8px
+
+		background-color: $color.background.primary
+		border-radius: 25px
+		box-shadow: 0 0 10px 0 alpha($color.option.dark-gray, 30%)
+
+	.field,
+	.radio
+		margin-bottom: 8px
+
+	.field__input
+		height: 52px
+
+	.field__placeholder
+		top: 15px
+
+	.radio__caption
+		margin-left: 12px
+
+		font-weight: 400
+		font-size: 14px
+		line-height: normal
+
+	.field-avatar
+		margin-bottom: 24px
+
+	.field-avatar__box
+		+media(tablet)
+			justify-content: center
+
+		+media(desktop)
+			justify-content: flex-start
+
+	&__label
+		margin-bottom: 16px
+
+		font-weight: 400
+		font-size: 16px
+		line-height: normal
+
+		+media(tablet)
+			margin-bottom: 10px
+
+	&__group
+		.radio
+			margin-right: 40px
+
+	&__row
+		+media(tablet)
+			display: flex
+			margin: 0 -14px
+
+			&--reverse
+				flex-direction: row-reverse
+
+	&__col
+		+media(tablet)
+			width: 50%
+			padding: 0 14px

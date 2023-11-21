@@ -1,0 +1,67 @@
+extends ../../config/pug/layout
+
+include ../../components/modal/modal
+include ../../components/modal/modal-login/modal-login
+include ../../components/modal/modal-city/modal-city
+include ../../components/modal/modal-callback/modal-callback
+include ../../components/modal/modal-empty/modal-empty
+include ../../components/modal/modal-message/modal-message
+include ../../components/modal/modal-message-success-login/modal-message-success-login
+include ../../components/modal/modal-cookies/modal-cookies
+include ../../components/modal/modal-feedback/modal-feedback
+include ../../components/modal/modal-feedback/modal-feedback-form
+
+include ../../components/breadcrumbs/breadcrumbs
+include ../../components/switch/switch
+include ../../components/personal/personal-nav/personal-nav
+include ../../components/personal/personal-feedback/personal-feedback
+
+block append config
+	-
+		bodyClass = 'main'
+		pageName = 'Обратная связь';
+		style = 'style-personal';
+		scripts = ['script-personal'];
+
+block variables
+	include ../../data/breabcrumbs/catalog
+	include ../../data/personal/personal-nav
+	include ../../data/personal/personal-feedback
+
+block main
+	+breadcrumbs([
+		{
+			href: '#',
+			name: 'Обратная связь',
+		}
+	], {
+		mode: 'title'
+	})
+
+	.personal.container
+		aside.personal__aside
+			+personal-nav(personalNav, {
+				active: 'Обратная связь'
+			})
+		main.personal__main
+			.personal__control
+				button(class="personal__button color-button js-modal" type="button" data-modal="modal-feedback-form") Создать обращение
+			+personal-feedback(personalFeedback)
+
+block modals
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()
+	+modal('modal-feedback').modal--feedback
+		+modal-feedback()
+	+modal('modal-feedback-form').modal--feedback
+		+modal-feedback-form()

@@ -1,0 +1,178 @@
+.tabs {
+	margin-bottom: 38px
+
+	color: $color.primary;
+	font-size: 14px
+
+	border-radius: 8px;
+	
+	+media(tablet) {
+		font-size: 18px
+	}
+	
+	+media(desktop) {
+		margin-bottom: 88px
+	}
+	
+}
+	
+.tabs-header {
+	display: flex
+	align-items: center
+	justify-content: space-between
+	padding: 12px 0
+
+	background-color: $color.primary-white;
+	border-radius: 8px 8px 0 0;
+	
+	&__list {
+		display: flex
+		flex-grow: 1;
+		align-items: center
+		justify-content: space-around
+		overflow: hidden;
+
+		+media(laptop) {
+			max-width: 560px
+		}
+	}
+}
+
+.tabs-pages {
+	overflow: hidden;
+
+	border-radius: 0 0 8px 8px;
+}	
+	
+
+.tabs-caption {
+	position: relative
+
+	display: inline-flex
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	height: 41px;
+	padding-right: 0
+	padding-left: 0
+
+	color: $color.option.dark-gray;
+
+	border: 1px solid transparent;
+	cursor: pointer
+	
+	&::after {
+		position: absolute
+		right: 0
+		bottom: 0
+		left: 0
+
+		display: block
+		width: 100%
+		height: 4px
+
+		background: $color.gradient.primary
+		border-radius: 4px 4px 0 0;
+		opacity: 0;
+
+		content: ''
+	}
+	
+	&.js-active {
+		color: $color.primary
+		font-weight: 600
+
+		&::after {
+			opacity: 1
+		}
+	}
+	
+	+media(tablet) {
+		height: 46px;
+		padding-right: 24px
+		padding-left: 24px
+	}
+	
+	+media(desktop) {
+		padding-right: 12px;
+		padding-left: 12px
+	}
+	
+	&:not(.js-active) {
+		+hover() {
+			color: $color.option.orange;
+		}
+	}
+}
+	
+.tabs-captions {
+	padding: 0 12px
+
+	background-color: $color.option.gray;
+	border-radius: 8px
+	
+	+media(tablet) {
+		padding-right: 40px;
+		padding-left: 40px
+	}
+	
+	+media(desktop) {
+		padding-right: 24px;
+		padding-left: 24px
+	}
+}	
+	
+
+.tabs-page {
+	
+	visually-hidden();
+
+	transition: opacity $transition.primary;
+	
+	transition-delay: .1s;
+	
+	&.js-active {
+		is-visible();
+	}
+	
+	&__inner {
+		padding-top: 12px
+		padding-bottom: 12px
+
+		background-color: $color.primary-white;
+	}
+}
+
+.page-wrapper {
+	overflow: hidden;
+}
+
+.tabs-widgets {
+	visually-hidden();
+	
+	+media(desktop) {
+		is-visible();
+	}
+	
+	&__button {
+		color: $color.primary
+		
+		+media(desktop) {
+			width: 43px
+			height: 43px
+
+			border: none
+		
+			.icon:first-child,
+			.icon:last-child {
+				width: 25px
+				height: 25px
+			}
+			
+			+hover() {
+				color: $color.option.orange
+			}
+
+		}
+	}
+}	

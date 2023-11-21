@@ -1,0 +1,43 @@
+//- Открываем классом .catalog-mobile--open на body. headerCatalog уже подключен
+//- Если выбрана категория - на .mobile-catalog вешается .mobile-catalog--category-selected
+
+.mobile-catalog.js-mobile-catalog
+	.mobile-catalog__prolog.mobile-catalog-search
+		+searchPanelMobile('back')
+
+	.mobile-catalog__inner
+		h4.mobile-catalog__header Каталог
+		.mobile-catalog__categories.mobile-categories
+			ul.mobile-categories__navigation.mobile-categories-navigation
+				each $category in headerCatalog
+					li.mobile-categories-navigation__item.js-mobile-category(class={
+						'js-active': $category.active === true,
+						'has-content': $category.empty === false
+					})
+						button.mobile-categories-navigation__button.js-mobile-category-button(type = "button" data-target = `${$category.target}` aria-label=$category.caption)
+							+icon($category.icon)
+							span.mobile-categories-navigation__caption #{$category.caption}
+							+icon('chevron_right')
+
+		.mobile-catalog__content.mobile-content.mobile-catalog__scrollbox.js-mobile-catalog-scrollbox
+			.mobile-tabs
+				each $category in headerCatalog
+					.mobile-tabs__item.mobile-tab.js-mobile-tab(class={ 'js-active': $category.active === true }, data-page = $category.target)
+						.mobile-tab__inner
+							if $category.content
+								each $item in $category.content
+									.column(class={'column--new': $item.news === true, 'column-no-data' : $category.empty === true})
+										h5.mobile-tab__title #{$item.name}
+										ul.mobile-tab__list
+											each $link in $item.items
+												li.mobile-tab__item
+													a.mobile-tabg__link(href = $link.href title = $link.title) #{$link.title}
+							else
+								if $category.cover
+									.column.column--no-data
+										h5.mobile-tab__title #{$category.caption}
+										img(src=$category.cover alt="" loading="lazy")
+										
+			.mobile-content__intro.mobile-content-intro.page-image
+				a.mobile-content-intro__link(href=headerCatalogIntro.href title=headerCatalogIntro.name)
+					+picture('order')

@@ -1,0 +1,37 @@
+.page
+	position: relative
+
+	display: flex
+	flex-direction: column
+	min-height: 100%
+	overflow: hidden
+	
+	&__content
+		background-color: $color.primary-white
+
+	&__title
+		margin-top: 24px
+
+	//stylelint-disable	
+	&__section
+		margin-top: 24px
+		& + &
+		^[-1]__title + &
+			margin-top: 24px
+	
+	+before() {
+		position: absolute
+		inset: 0
+		z-index: -99
+		display: block
+		background-color: $color.primary
+		opacity: 0
+		transition: opacity $transition.primary
+	}	
+	//stylelint-enable		
+
+.page__breadcrumbs
+	margin-bottom: 20px
+
+	+media(tablet)
+		margin-bottom: 25px

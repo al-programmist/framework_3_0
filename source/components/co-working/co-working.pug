@@ -1,0 +1,9 @@
+include ../../data/coWorkerData
+
+section.section.co-working.js-coworking
+    .container
+        h2.section__header.co-working__header Сотрудничество
+        .co-working__inner.swiper
+            .co-workers.swiper-wrapper
+                each item in coWorkerData
+                    +coworker(item)

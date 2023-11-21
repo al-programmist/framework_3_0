@@ -1,0 +1,57 @@
+mixin picture(name, options = {})
+	-
+		const
+			format = options.format ? options.format : 'jpg',  //- указываем формат картинки (по умолчанию: 'jpg')
+			loader = options.loader == false ? false : true,  //- должен ли быть прелоадер у картинки (по умолчанию: true)
+			alt = options.alt ? options.alt : '',  //- значение атрибута alt у картинки (по умолчанию пустая строка)
+			isContent = options.isContent == false ? '' : '/content',  //- указывает является ли картинка контентной (по умолчанию картинка контентная)
+			responsive = options.responsive == undefined ? false : options.responsive, //- можно указать перечень нужных параметров в массиве
+			lazy = options.lazy == undefined ? true : options.lazy //- определяет будет ли применяться lazyload к изображению
+			width= options.width
+			height= options.height
+
+	//-
+		{
+			responsive: [
+				{
+					media: 'tablet',   [ tablet | desktop | semi | large | своё значение ]
+					name: 'имя картинки',   не обязательный параметр, если его не указать, то будет применяться основное имя картинки с мобидифатором type
+					format: 'jpg'   не обязательный параметр, указывает формат картинки для данного разрешения (по уполчанию применяется формат изначальной кратинки)
+				}
+			]
+		}
+
+	picture(
+			class= lazy ? 'lazy' : ''
+		)&attributes(attributes)
+
+		if responsive
+			each pic in responsive
+				if pic.media
+					-
+						pic.name = pic.name ? pic.name : `${name}--${pic.media}`;
+						pic.format = pic.format ? pic.format : format;
+						pic.media = breakpoint[pic.media] || pic.media
+
+					source(
+						data-srcset= lazy ? `./images${isContent}/${pic.name}.webp` : ''
+						srcset= lazy ? `./images/pixel.png` : `./images${isContent}/${pic.name}.webp`
+						media=`(min-width: ${pic.media}px)`
+						type="image/webp"
+					)
+					source(
+						data-srcset= lazy ? `./images${isContent}/${pic.name}.${pic.format}` : ''
+						srcset= lazy ? `./images/pixel.png` : `./images${isContent}/${pic.name}.${pic.format}`
+						media=`(min-width: ${pic.media}px)`
+					)
+
+		source(
+			data-srcset= lazy ? `./images${isContent}/${name}.webp` : ''
+			srcset= lazy ? `./images/pixel.png` : `./images${isContent}/${name}.webp`
+			type="image/webp"
+		)
+		img(
+			data-src= lazy ? `./images${isContent}/${name}.${format}` : ''
+			src= lazy ? `./images/pixel.png` : `./images${isContent}/${name}.${format}`
+			alt= alt 
+		)

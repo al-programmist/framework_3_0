@@ -1,0 +1,24 @@
+mixin personal-feedback(data = [], options = {})
+	.personal-feedback&attributes(attributes)
+		.personal-feedback__head
+			.personal-feedback__title № Обращения
+			.personal-feedback__title Дата
+			.personal-feedback__title Статус обращения
+		.personal-feedback__body
+			each item in data
+				-
+					item = {
+						number: item.number || '',
+						date: item.date || '',
+						status: item.status || ''
+					}
+
+				.personal-feedback__item
+					.personal-feedback__element
+						span.personal-feedback__title.hide--desktop № Обращения 
+						span.personal-feedback__text= item.number
+					.personal-feedback__element
+						span.personal-feedback__text.hide--desktop от 
+						span.personal-feedback__text= item.date
+					.personal-feedback__element
+						button(class="personal-feedback__link js-modal" type="button" data-modal="modal-feedback")= item.status

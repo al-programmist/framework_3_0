@@ -1,0 +1,29 @@
+.modal-cost-estimate
+	.field__wrapper
+		position: relative
+
+		display: block
+		border-gradient(1px, 4px, $color.primary, $color.gradient.primary)
+
+		+before()
+			position: absolute
+			inset: 0
+
+	.field__input
+		padding-block: 12px
+
+		border: none
+
+	.modal__content
+		position: relative
+
+		display: flex
+		flex-direction: column
+		gap: 16px
+		padding-bottom: 32px
+		+media-max(tablet)
+			border-radius 25px 25px 0 0
+	.modal__body
+		+media-max(tablet)
+			bottom 62px
+			border-radius 25px 25px 0 0

@@ -1,0 +1,63 @@
+extends ../../config/pug/layout
+
+include ../../components/modal/modal
+include ../../components/modal/modal-login/modal-login
+include ../../components/modal/modal-city/modal-city
+include ../../components/modal/modal-callback/modal-callback
+include ../../components/modal/modal-empty/modal-empty
+include ../../components/modal/modal-message/modal-message
+include ../../components/modal/modal-message-success-login/modal-message-success-login
+include ../../components/modal/modal-cookies/modal-cookies
+
+include ../../components/breadcrumbs/breadcrumbs
+include ../../components/personal/personal-nav/personal-nav
+
+
+block append config
+	-
+		bodyClass = 'main'
+		pageName = 'Мои заказы';
+		style = 'style-personal';
+		scripts = ['script-personal'];
+
+block variables
+	include ../../data/breabcrumbs/catalog
+	include ../../data/personal/personal-nav
+
+block main
+	+breadcrumbs([
+		{
+			href: '#',
+			name: 'Мои заказы',
+		}
+	], {
+		mode: 'title'
+	})
+
+	.personal.container
+		aside.personal__aside
+			+personal-nav(personalNav, {
+				active: 'Мои заказы'
+			})
+		main.personal__main
+			.personal-empty
+				.personal-empty__img
+					img(src="./images/empty-orders.svg" alt="")
+				.personal-empty__title У вас пока нет заказов
+				.personal-empty__text Совершите покупку на сайте
+				a(class="button button-to-busket" href="#")
+					span.button__caption Перейти в каталог
+
+block modals
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()

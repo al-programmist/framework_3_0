@@ -1,0 +1,10 @@
+mixin helpItem(data)
+	article.help-slider__item.help-slide.swiper-slide
+		a(href=`${data.url}` title=`${data.name}`).help-slide__image.page-image
+			+picture(data.src, {
+				alt: data.name
+			})
+		.help-slide__text.help-description
+			h3.help-description__header #{data.name}
+			a.help-description__action(href="javascript:void(0);" title="Подробнее") Подробнее
+				+icon('long-arrow__left')

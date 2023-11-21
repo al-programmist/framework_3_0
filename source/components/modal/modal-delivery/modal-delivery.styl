@@ -1,0 +1,29 @@
+.modal-delivery
+	+media-max(desktop)
+		align-items start
+	.modal
+		&__close
+			+media-max(desktop)
+				display none
+		&__body
+			+media-max(desktop)
+				top 0
+				bottom auto
+				width 100%
+				height calc(100% - 70px)
+				border-radius 25px 25px 0 0
+		&__content
+			position relative
+			height fit-content
+			padding-bottom 24px
+			+media-max(desktop)
+				display flex
+				height 100%
+				border-radius 25px 25px 0 0
+	&__back
+		position absolute
+		top 27px
+		left 16px
+		z-index 515
+		+media(desktop)
+			display none

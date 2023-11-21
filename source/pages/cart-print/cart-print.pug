@@ -1,0 +1,54 @@
+include ../../data/products/cart
+
+include ../../components/picture/picture
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		link(rel='stylesheet' href='./css/style-cart-print.min.css')
+
+		link(rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png")
+		link(rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png")
+		link(rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png")
+		link(rel="manifest" href="./favicon/site.webmanifest")
+		link(rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#2968e3")
+		link(rel="shortcut icon" href="./favicon/favicon.ico")
+		meta(name="msapplication-TileColor" content="#ffffff")
+		meta(name="msapplication-config" content="./favicon/browserconfig.xml")
+		meta(name="theme-color" content="#ffffff")
+	body.cart-print
+		header.cart-print-header.cart-print__header
+			.cart-print-header__date 31.05.2023  11:55:12
+			.cart-print-header__name Корзина
+			img(src='./images/logo.svg' alt='').cart-print-header__logo
+			.cart-print-header__title Интернет-магазин
+			.cart-print-header__tel 8 (800) 333-20-37
+		main.cart-print__main
+			h1.cart-print__title Корзина
+			table.cart-print__table.cart-print-table
+				thead
+					tr
+						th №
+						th Фото
+						th Наименование
+						th Код товара
+						th Кол-во
+						th Цена
+						th Сумма
+				tbody.cart-print-table__body
+					each product, key in cartProducts
+						tr
+							td !{key + 1}
+							td.cart-print-table__image: picture
+								source(srcset=`./images/content/${product.image}.webp` type='image/webp')
+								img(src=`./images/content/${product.image}.jpg` alt= product.name)
+							td.cart-print-table__name !{product.name}
+							td 0000000
+							td !{product.value} уп.
+							td.cart-print-table__price !{product.price.current} ₽
+							td.cart-print-table__price !{product.value * product.price.current} ₽
+				tfoot.cart-print-table__footer
+					tr
+						td(colspan=3) Итого
+						td(colspan=4).cart-print-table__total 16 500 ₽

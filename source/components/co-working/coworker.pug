@@ -1,0 +1,11 @@
+mixin coworker(data)
+	if (data)
+		article.co-worker.co-workers__item.swiper-slide(class={ 'co-workers__item--reverse': data.reverse === true })
+			.co-worker__image.page-image
+				+picture(data.image.src, {
+					alt: data.name,
+					responsive: data.image.responsive
+				})
+			.co-worker__text
+				h3.co-worker__caption #{data.title}
+				p.co-worker__description #{data.text}

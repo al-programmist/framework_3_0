@@ -1,0 +1,28 @@
+include ../../data/heroData
+
+section.section.hero
+	.container
+		h2.section__header.hero__header.visually-hidden Актуальные предложения
+		.section__inner.hero-slider.swiper.js-hero-slider
+			.swiper-wrapper
+				each item in heroData
+					.swiper-slide
+						a.hero-slider__item(href=`${item.url}` title=`${item.name}`)
+							h3.visually-hidden #{item.name}
+							.hero-slider__image.page-image
+								+picture(item.src, {
+									alt: '',
+									lazy: false,
+									responsive: [
+										{
+											media: 'large'
+										},
+										{
+											media: 'desktop'
+										},
+										{
+											media: 'tablet'
+										},
+									]
+								})
+			.swiper-pagination.js-swiper-pagination

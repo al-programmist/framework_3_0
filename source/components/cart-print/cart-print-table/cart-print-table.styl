@@ -1,0 +1,35 @@
+.cart-print-table
+	font-size 12px
+	th
+		padding-inline 7px 8px
+		font-size 10px
+		white-space nowrap
+	td
+		padding-inline 7px 8px
+		padding-top 20px
+		vertical-align top
+	:is(td, th):first-child
+		padding-left 0
+	&__body
+		tr:last-child
+			td
+				padding-bottom 30px
+	&__price
+		text-align right
+	&__image
+		img
+			width 48px
+	&__footer
+		font-size 16px
+		font-weight 700
+		line-height 1.8
+		border-top 1px solid var(--color-option-gray)
+		td
+			padding-top 10px
+			vertical-align center
+	&__total
+		font-size 20px
+		font-weight 600
+		line-height normal
+		text-align right
+		letter-spacing -.6px

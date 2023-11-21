@@ -1,0 +1,374 @@
+-
+	const cityDefault = [
+		{
+			name: 'Адлер',
+			isGroupLeader: true,
+			code: 'aaq',
+			isSelect: false
+		},
+		{
+			name: 'Альметьевск',
+			code: 'alm',
+			isSelect: false
+		},
+		{
+			name: 'Ангарск',
+			code: 'ang',
+			isSelect: false
+		},
+		{
+			name: 'Архангельск',
+			code: 'arh',
+			isSelect: false
+		},
+		{
+			name: 'Астрахань',
+			code: 'ast',
+			isSelect: false
+		},
+		{
+			name: 'Барнаул',
+			isGroupLeader: true,
+			code: 'brn',
+			isSelect: false
+		},
+		{
+			name: 'Белгород',
+			code: 'bel',
+			isSelect: false
+		},
+		{
+			name: 'Брянск',
+			code: 'bry',
+			isSelect: false
+		},
+		{
+			name: 'Бузулук',
+			code: 'buz',
+			isSelect: false
+		},
+		{
+			name: 'Великий Новгород',
+			isGroupLeader: true,
+			code: 'vng',
+			isSelect: false
+		},
+		{
+			name: 'Владимир',
+			code: 'vla',
+			isSelect: false
+		},
+		{
+			name: 'Волгоград',
+			isSelect: false,
+			code: 'vgg',
+		},
+		{
+			name: 'Волжский',
+			code: 'vol',
+			isSelect: false
+		},
+		{
+			name: 'Вологда',
+			code: 'vlg',
+			isSelect: false
+		},
+		{
+			name: 'Воронеж',
+			code: 'vrn',
+			isSelect: false
+		},
+		{
+			name: 'Глазов',
+			isGroupLeader: true,
+			code: 'gla',
+			isSelect: false
+		},
+		{
+			name: 'Дзержинск',
+			code: 'dze',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Екатеринбург',
+			code: 'ekb',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Елец',
+			code: 'elc',
+			isSelect: false
+		},
+		{
+			name: 'Иваново',
+			isGroupLeader: true,
+			code: 'iva',
+			isSelect: false
+		},
+		{
+			name: 'Ижевск',
+			code: 'izh',
+			isSelect: false
+		},
+		{
+			name: 'Иркутск',
+			code: 'irk',
+			isSelect: false
+		},
+		{
+			name: 'Йошкар-Ола',
+			code: 'yla',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Казань',
+			code: 'kzn',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Калуга',
+			code: 'kal',
+			isSelect: false
+		},
+		{
+			name: 'Камышин',
+			code: 'kms',
+			isSelect: false
+		},
+		{
+			name: 'Киров',
+			code: 'kir',
+			isSelect: false
+		},
+		{
+			name: 'Колпино',
+			code: 'klp',
+			isSelect: false
+		},
+		{
+			name: 'Кострома',
+			code: 'kst',
+			isSelect: false
+		},
+		{
+			name: 'Курск',
+			code: 'kur',
+			isSelect: false
+		},
+		{
+			name: 'Липецк',
+			code: 'lip',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Магнитогорск',
+			code: 'mgg',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Майкоп',
+			code: 'mkp',
+			isSelect: false
+		},
+		{
+			name: 'Москва',
+			code: 'msk',
+			isSelect: true
+		},
+		{
+			name: 'Мурманск',
+			code: 'mur',
+			isSelect: false
+		},
+		{
+			name: 'Набережные Челны',
+			isGroupLeader: true,
+			code: 'nch',
+			isSelect: false
+		},
+		{
+			name: 'Нефтекамск',
+			code: 'nkm',
+			isSelect: false
+		},
+		{
+			name: 'Нижнекамск',
+			code: 'niz',
+			isSelect: false
+		},
+		{
+			name: 'Нижний Новгород',
+			code: 'nnv',
+			isSelect: false
+		},
+		{
+			name: 'Октябрьский',
+			code: 'okt',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Орел',
+			code: 'olr',
+			isSelect: false
+		},
+		{
+			name: 'Оренбург',
+			code: 'orb',
+			isSelect: false
+		},
+		{
+			name: 'Пенза',
+			code: 'pnz',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Пермь',
+			code: 'prm',
+			isSelect: false
+		},
+		{
+			name: 'Петрозаводск',
+			code: 'ptr',
+			isSelect: false
+		},
+		{
+			name: 'Прокопьевск',
+			code: 'prk',
+			isSelect: false
+		},
+		{
+			name: 'Псков',
+			code: 'psk',
+			isSelect: false
+		},
+		{
+			name: 'Ростов-на-Дону',
+			code: 'rnd',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Рязань',
+			code: 'ryz',
+			isSelect: false
+		},
+		{
+			name: 'Салават',
+			code: 'sal',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Самара',
+			code: 'sam',
+			isSelect: false
+		},
+		{
+			name: 'Санкт-Петербург',
+			code: 'spb',
+			isSelect: false
+		},
+		{
+			name: 'Саратов',
+			code: 'sar',
+			isSelect: false
+		},
+		{
+			name: 'Смоленск',
+			code: 'smo',
+			isSelect: false
+		},
+		{
+			name: 'Сочи',
+			code: 'sch',
+			isSelect: false
+		},
+		{
+			name: 'Стерлитамак',
+			code: 'slt',
+			isSelect: false
+		},
+		{
+			name: 'Сыктывкар',
+			code: 'stk',
+			isSelect: false
+		},
+		{
+			name: 'Тамбов',
+			code: 'tve',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Тверь',
+			code: '',
+			isSelect: false
+		},
+		{
+			name: 'Тольятти',
+			code: 'tol',
+			isSelect: false
+		},
+		{
+			name: 'Томск',
+			code: 'tom',
+			isSelect: false
+		},
+		{
+			name: 'Тула',
+			code: 'yul',
+			isSelect: false
+		},
+		{
+			name: 'Улан-Удэ',
+			code: 'uud',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Ульяновск',
+			code: 'uly',
+			isSelect: false
+		},
+		{
+			name: 'Уфа',
+			code: 'ufa',
+			isSelect: false
+		},
+		{
+			name: 'Чайковский',
+			code: 'chk',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Чебоксары',
+			code: 'chb',
+			isSelect: false
+		},
+		{
+			name: 'Череповец',
+			code: 'chr',
+			isSelect: false
+		},
+		{
+			name: 'Энгельс',
+			code: 'eng',
+			isGroupLeader: true,
+			isSelect: false
+		},
+		{
+			name: 'Ярославль',
+			code: 'yar',
+			isGroupLeader: true,
+			isSelect: false
+		},
+	];

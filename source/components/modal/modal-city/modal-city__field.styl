@@ -1,0 +1,47 @@
+.modal-city__field {
+	position: relative
+
+	display: flex
+	align-items: center
+	justify-content: flex-start
+	margin-bottom: 16px
+	padding: 5px 8px
+
+	background-color: $color.primary
+	border-radius: 8px
+	
+	
+	.field__input {
+		flex-grow: 1
+		height: 40px 
+		padding: 8px 50px 8px 8px
+
+		font-size: 12px;
+
+		background-color: #fff
+		border-radius: 8px
+	}
+}
+	
+.modal-city__search-button {
+	position: absolute
+	top: 4px
+	right: 12px
+	z-index: 1
+
+	visibility: visible
+	
+}	
+
+.field__area
+	position: relative
+
+	flex-grow: 1
+
+.modal-city__back {
+	margin-right: 8px
+
+	+media(desktop) {
+		visually-hidden()
+	}
+}

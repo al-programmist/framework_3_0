@@ -1,0 +1,48 @@
+include ../../data/header/headerNavigation
+include ../../data/header/headerWidget
+include ../../data/phone/phone
+include ../../data/header/headerEpilogCategories
+include ../logo/logo
+include ../navigation/navigation
+
+mixin header()
+	if headerType !== 'empty'
+		header.header.js-header
+			if headerType === 'default'
+				.header__prolog.js-header-prolog
+					.container Профессиональная сеть магазинов напольных покрытий
+
+				.header__main.js-header-main
+					.container
+						.header__menu.menu
+							+logo('header__logo')
+							+location('Москва')
+						include ../burger/burger	
+						+phone('header__phone')
+						.header__widgets
+							each widget in widgets
+								if (widget.modal)
+									+bitButton(widget)(data-modal=widget.modal, aria-label=widget.title)
+								else
+									+bitButton(widget)(aria-label=widget.title)
+				.header__epilog.epilog.js-header-epilog
+					.container
+						.epilog__wrapper
+							.epilog__widgets.epilog-widgets
+								button.button.button-catalog.js-desktop-catalog-opener(type="button")
+									+icon('burger')
+									span.button__caption Каталог
+									+icon('close')
+							.epilog__inner
+								.epilog__categoreies-wrapper
+									+searchPanel()
+										
+									ul.epilog__categories.header-categories
+										each category in headerEpilogCategories
+											if category.active
+												li.header-categories__item.header-categories__item--active
+													a.header-categories__link(href=`${category.href}` title=`${category.title}`) #{category.title}
+											else
+												li.header-categories__item
+													a.header-categories__link(href=`${category.href}` title=`${category.title}`) #{category.title}
+												

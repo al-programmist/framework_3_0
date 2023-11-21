@@ -1,0 +1,172 @@
+.modal {
+	position: fixed
+	inset: 0
+	
+	z-index: 9999
+
+	display: flex
+	align-items: flex-end
+	justify-content: center
+
+	width: 100%
+	overflow-x: hidden
+	overflow-y: auto
+
+	font-size: 0
+
+	visibility: hidden
+	opacity: 0
+
+	transition: opacity $transition.primary
+
+	+media(tablet) {
+
+		align-items: center;
+		inset: 0
+	}
+	
+	+media(desktop) {
+	    z-index: 99999999999
+	}
+	
+	.field__input {
+		background-color: $color.option.gray
+	}
+	
+}
+	
+.modal__overlay {
+	position: absolute
+	inset: 0
+
+	z-index: 501
+
+	background-color: $color.text.primary
+	opacity: 0.4
+}
+	
+.modal__scrollbox {
+	max-height: calc(100vh - 290px)
+	overflow-y: auto
+	
+	+media(tablet) {
+		max-height: calc(100vh - 310px)
+	}
+	
+	+media(laptop) {
+		max-height: 152px
+	}
+}
+	
+
+.modal-login__back {
+	position: absolute;
+	top: 27px;
+	left: 16px;
+	z-index: 505;
+
+	width: 36px;
+	height: 36px;
+
+	border-color: #efefef;
+	visibility: hidden
+}
+
+
+.modal__body {
+	position: relative
+	bottom: 0
+	z-index: 502
+
+	width: 100%
+	min-height: 260px
+	overflow: hidden;
+
+	color: $color.primary
+	font-weight: 400
+	font-size: 16px
+	text-align: center
+
+
+	border-radius: 25px
+		
+	transition: transform $transition.primary
+	transition-delay: .2s
+	
+	&::before {
+		position: absolute
+		top: 0
+		right: 0
+		left: 0
+		z-index: -1
+		
+		display: block
+		width: 100%
+		height: 30px
+
+		background-image: $color.gradient.primary;
+
+		content: ''
+	}
+	
+	+media(tablet) {
+		bottom: initial; 
+
+		width: auto
+		min-width: 400px;
+		min-height: 200px
+	}
+
+}
+	
+.modal__content {
+	position: absolute
+	inset: 8px 0 0
+	
+	z-index: 504
+
+	padding: 60px 16px 16px
+
+	background-color: $color.primary-white
+	border-radius: 25px
+	
+	+media(tablet) {
+		padding-right: 19px;
+		padding-left: 19px
+	}
+	
+	+media(tablet) {
+		min-width: 400px
+
+		border-radius: 25px
+	}
+}	
+	
+.modal__close {
+	position: absolute
+	top: 27px
+	right: 16px
+	z-index: 505
+
+	width: 36px
+	height: 36px
+
+	border-color: $color.option.gray
+
+	+hover() {
+		color: $color.option.red
+	}
+}
+	
+.icon
+	width: 100%
+	height: 100%
+
+	&.title
+		+media(tablet)
+			font-size: 24px
+
+.modal__scrollbox
+	max-height: 260px
+
+@import 'modal--open'

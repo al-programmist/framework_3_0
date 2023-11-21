@@ -1,0 +1,86 @@
+.personal-feedback
+	&__head
+		display: none
+
+		+media(desktop)
+			display: flex
+			align-items: center
+			justify-content: space-between
+			margin-bottom: 16px
+			padding: 16px 20px
+
+			background-color: #FFF7B2
+			border-radius: 12px
+
+			.personal-feedback__title
+				width: 100%
+
+				&:last-child
+					flex-shrink: 0
+					width: 200px
+
+	&__body
+		margin-bottom: 24px
+
+	&__item
+		margin-bottom: 16px
+		padding: 16px 20px
+
+		background-color: $color.background.primary
+		border-radius: 8px
+		box-shadow: 0 0 10px 0 alpha($color.option.dark-gray, 30%)
+
+		&:last-child
+			margin-bottom: 0
+
+		+media(tablet)
+			display: flex
+			gap: 16px
+			justify-content: space-between
+
+		+media(desktop)
+			border-bottom: 2px solid $color.option.gray
+			border-radius: 0
+			box-shadow: none
+
+			.personal-feedback__element
+				width: 100%
+
+				&:last-child
+					flex-shrink: 0
+					width: 200px
+
+	&__element
+		margin-bottom: 16px
+
+		&:last-child
+			margin-bottom: 0
+
+		+media(tablet)
+			margin-bottom: 0
+
+	&__title
+		font-weight: 700
+		font-size: 16px
+		line-height: normal
+
+	&__text
+		font-weight: 400
+		font-size: 16px
+		line-height: normal
+
+	&__link
+		color: $color.primary-blue
+		font-weight: 400
+		font-size: 16px
+		line-height: normal
+
+		cursor: pointer
+
+		transition: color $transition.primary
+
+		+hover()
+			color: lighten($color.primary-blue, 15%)
+		
+		+active()
+			color: darken($color.primary-blue, 15%)

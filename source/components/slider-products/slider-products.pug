@@ -1,0 +1,25 @@
+include ../card/card
+
+mixin sliderProducts(title)
+	.slider-products.js-slider-products&attributes(attributes)
+		.slider-products__title !{title}
+		button.button-control.button-control--slider.button-control--no-border.slider-products__arrow.slider-products__arrow--prev(type="button")
+			+icon('arrow-left')
+		button.button-control.button-control--slider.button-control--no-border.slider-products__arrow.slider-products__arrow--next(type="button")
+			+icon('arrow-right')
+		.slider-products__slider.swiper
+			.slider-products__wrapper.swiper-wrapper
+				each item in [1, 2, 3, 4, 5, 6]
+					+card({
+						caption: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный',
+						description: '32 класс, толщина 8 мм, Без фаски',
+						image: {
+							src: 'recomendations/recommend-item_1',
+							alt: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный'
+						},
+						price: {
+							current: '2 420',
+							old: '4 200',
+							discount: '-10%'
+						}
+					}).slider-products__item.swiper-slide

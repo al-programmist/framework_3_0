@@ -1,0 +1,35 @@
+extends ../../config/pug/layout
+
+include ../../components/modal/modal-login/modal-login
+
+block append config
+	-
+		pageName = 'Главная страница';
+		style = 'style-main';
+		scripts = ['script-main'];
+		bodyClass = 'main'
+
+block variables
+
+block main
+	include ../../components/hero/hero
+	include ../../components/recommended/recommended
+	include ../../components/actions/actions
+	include ../../components/help/help
+	include ../../components/inspiration/inspirations
+	include ../../components/co-working/co-working
+	
+
+block modals
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()

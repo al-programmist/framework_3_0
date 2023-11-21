@@ -1,0 +1,7 @@
+include ../modal
+
+mixin modalCostEstimate
+	+modal.modal-cost-estimate.js-modal-cost-estimate#modal-cost-estimate&attributes(attributes)
+		h2.modal-cost-estimate__title Сохранить смету
+		+field({ value: 'Смета 31.05.2023  11:55:12' }).modal-cost-estimate__field
+		a(href='#' download).button.button--black.modal-cost-estimate__download Сохранить

@@ -1,0 +1,12 @@
+mixin navigation(classname, itemsList = [])
+	if itemsList.length !== 0
+		nav.navigation(class=`${classname}`)
+			.container
+				ul
+					each item in itemsList
+						li
+							if item.href
+								a(href= item.href)= item.name
+							else
+								span= item.name
+

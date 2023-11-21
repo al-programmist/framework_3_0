@@ -1,0 +1,19 @@
+mixin checkbox(caption, name, inValidator, required, disabled, checked)
+	-
+		isDisables = disabled || false
+		isRequired = required || false
+		isChecked = checked || false
+		checkboxCaption = caption || 'Чекбокс'
+	label.checkbox.js-checkbox&attributes(attributes)
+		span.checkbox__inner
+			input.checkbox__input.visually-hidden(
+				class={'js-validate': inValidator === true},
+				type="checkbox" 
+				name=name 
+				disabled=isDisables 
+				required=isRequired 
+				checked=isChecked
+			)
+			span.checkbox__indicator
+			span.checkbox__caption #{checkboxCaption}
+		span.error-message.js-error-message

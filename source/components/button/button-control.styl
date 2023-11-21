@@ -1,0 +1,64 @@
+.button-control
+	position: relative
+
+	display: inline-flex
+	align-items: center
+	justify-content: center
+
+	width: 36px
+	height: 36px
+	overflow: hidden;
+
+	color: $color.primary;
+
+	background-color: transparent;
+	border: 1px solid @color;
+	border-radius: 4px
+
+	transition: color $transition.primary,
+		border-color $transition.primary
+
+	.icon
+		flex-grow: 0;
+		flex-shrink: 0
+
+	.icon:first-child
+		width: 14px
+		height: 14px;
+		margin-right: 10px
+
+	.icon:last-child
+		margin-left: 10px
+
+	&.loading
+		color: transparent
+
+	&.loading > *
+		visibility: hidden
+		opacity: 0
+
+	&.loading::before
+		background-color: $color.background.primary
+		
+	&--white
+		color: $color.primary-white
+
+		border-color: $color.primary-white
+	
+	&--close
+		.icon:first-child
+			width: 27px
+			height: 27px;
+			margin: 0
+
+	&--slider
+		width: 43px
+		height: 43px
+		
+		.icon:first-child
+			width: 20px
+			height: 20px
+	
+	&--no-border
+		border: none
+

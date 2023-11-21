@@ -1,0 +1,19 @@
+mixin searchPanel(placeholder)
+	- $placeholder = placeholder || "Ищу плинтус, ламинат...";
+	.search-panel.js-search-panel--desktop&attributes(attributes)
+		+bitButton({
+			id: 'search',
+			classname: 'bit-button--white header-catalog__search js-header-search',
+			type: 'button',
+			href: '#',
+			title: 'Поиск',
+		})(aria-label="Поиск")
+		form.search-panel-form.header-catalog-search__desktop(action="#" method="post")
+			.search-panel__control.search-button__control--pr
+				input.search-panel__input(type="text" placeholder=$placeholder)
+				+bitButton({
+					id: 'search',
+					type: 'button',
+					title: 'Поиск',
+					classname: 'bit-button--red bit-button--no-border search-button js-catalog-search',
+				})(aria-label="Найти")

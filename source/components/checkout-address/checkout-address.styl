@@ -1,0 +1,29 @@
+.checkout-address
+	display grid
+	grid-template-columns repeat(2, 1fr)
+	gap 12px
+	align-content start
+	width 100%
+	+media-interval(tablet, desktop)
+		column-gap 24px
+	&__title
+		grid-column 1/-1
+		margin-bottom 24px
+		font-size 24px
+		font-weight 700
+		text-align center
+		+media-interval(tablet, desktop)
+			font-size 32px
+			font-weight 600
+	&__field
+		&--wide
+			grid-column 1/-1
+	&__submit
+		grid-column 1/-1
+		max-width none
+	.error-message
+		display none
+	.js-invalid .error-message
+		display block
+	.form__field
+		margin-bottom 0

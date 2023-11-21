@@ -1,0 +1,297 @@
+.mobile-catalog {
+	position: fixed
+	inset: 65px 100vw 80px -100vw
+
+	z-index: 1000
+
+	width: 100%
+	padding: 16px
+
+	color: $color.primary
+	font-weight: 400
+	font-size: 18px
+
+	background-color: $color.primary-white
+	border-radius: 25px
+	
+	transition: transform $transition.primary
+	
+	&__close,
+	&__back {
+		margin-right: 12px
+	}
+	
+	&__back {
+		visually-hidden()
+	}
+	
+	&__inner {
+		position: relative
+
+		height: calc(100% - 70px);
+		overflow: hidden
+	}
+	
+	&__header {
+		margin-bottom: 16px
+
+		font-weight: 600;
+		font-size: 24px
+	}
+	
+	&__content {
+		position: absolute
+		inset: 0 -100vw 0 100vw
+
+		z-index: 1;
+
+		background-color: $color.primary-white;
+		
+		transition: transform $transition.primary
+	}
+
+	@media screen and (min-width: 467px) {
+		top: calc(46px)
+	}
+	
+	+media(tablet) {
+		padding: 10px 20px 20px
+
+		border-radius: 40px
+	}
+	
+	+media(desktop) {
+		visually-hidden()
+	}
+}
+	
+.mobile-catalog-search {
+	display: flex
+	align-items: center
+	justify-content: flex-start
+	margin-bottom: 16px
+	padding: 5px 8px
+
+	background-color: $color.primary;
+	border-radius: 8px
+}
+	
+.mobile-categories-navigation {
+	border-top: 1px solid $color.option.gray;
+	
+	&__item {
+		border-bottom: 1px solid $color.option.gray;
+
+		.icon:last-child {
+			display: none
+		}
+		
+		&.has-content {
+			.icon:last-child {
+				display: inline-flex
+				width: 12px
+				height: 13px;
+				margin-left: auto
+			}
+		}
+		
+		&.js-active {
+			button {
+				background-color: transparent
+			}
+		}
+	}
+	
+	&__caption {
+		display: block;
+		flex-grow: 1;
+		width: 100%;
+
+		text-align: left
+	}
+	
+	&__button {
+		display: flex
+		align-items: center
+		justify-content: flex-start
+		width: 100%;
+		padding-top: 16px
+		padding-bottom: 16px 
+		
+		//stylelint-disable
+		.icon:first-child {
+			flex-grow: 0;
+			flex-shrink: 0;
+			width: 26px
+			height: 18px
+		}
+		//stylelint-enable
+		
+	}
+}
+	
+.mobile-tabs {
+	flex-basis: 100%
+	flex-grow: 1;
+	
+	&__item {
+		visually-hidden()
+		
+		&.js-active {
+			is-visible()
+		}
+	}
+	
+	+media(tablet) {
+		flex-basis: 45%
+		padding-right: 40px
+	}
+}
+	
+.mobile-tab {
+	&__title {
+		margin-bottom: 16px
+
+		font-weight: 600;
+		font-size: 24px
+	}
+	
+	&__item {
+		margin-bottom: 16px
+	}
+	
+	.column {
+		padding-bottom: 10px
+		
+		&--no-data {
+			padding-bottom: 35px
+			
+			img {
+				max-width: 100%
+				width: 100%
+				
+				@media screen and (min-width: 480px) {
+					max-width: 260px
+				}
+			}
+		}
+		
+		&--new {
+			padding-top: 16px
+
+			border-top: 1px solid $color.option.gray;
+			
+			.mobile-tabg__link {
+				color: $color.option.orange
+			}
+		}
+	}
+}
+	
+.mobile-content {
+	+media(tablet) {
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+	}
+}	
+
+.mobile-content-intro {
+	max-width: 261px
+	overflow: hidden
+	flex-basis: 100%
+
+	border-radius: 10px
+	
+	&__link {
+		display: block
+		aspect-ratio: 0.7
+	}
+	
+	img {
+		width: 100%
+		height: 100%
+		object-fit: cover
+	}
+	
+	+media-max(mobile) {
+
+		width: 100%;
+		max-width: 100%
+	}
+	
+	+media(tablet) {
+		flex-basis: 261px   
+	}
+}	
+	
+.catalog-mobile--open {
+	overflow: hidden;
+
+	.mobile-catalog {
+		z-index: 999999;
+
+		transform: translateX(100vw)
+	}
+	
+	.mobile-navigation {
+		z-index: 1001
+	}
+	
+	&.js-header--fixed {
+		.mobile-catalog {
+			top: 58px;
+			padding-top: 10px
+
+			+media(tablet) {
+				top: 80px;
+			}
+		}
+	}
+}
+
+.js-header--fixed {
+	.mobile-catalog {
+		top: 58px;
+		padding-top: 10px
+
+		+media(tablet) {
+			top: 80px;
+		}
+	}
+}
+
+.mobile-catalog--category-selected {
+	.mobile-catalog__content {
+		transform: translateX(-100vw)
+	}
+	
+	.mobile-catalog__back {
+		position: static
+
+		width: 36px
+		height: 36px
+		margin-right: 12px
+		overflow: visible
+
+		border: 1px solid $color.primary-white;
+		visibility: visible
+		opacity: 1
+
+		clip: unset
+		clip-path: unset
+	}
+	
+	.button-control--close {
+		visually-hidden();
+	}
+}
+
+.mobile-content {
+	.simplebar-content {
+		display: flex
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: flex-start
+	}
+}

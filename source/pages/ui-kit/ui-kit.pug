@@ -1,0 +1,834 @@
+extends ../../config/pug/layout
+
+include ../../components/counter/counter
+include /components/switch/switch
+
+block append config
+	-
+		pageName = 'UI-Kit';
+		
+		//- 
+		//- Параметры bodyClass для управления меню. Можно прописывать только один дополнительный класс
+		//- {
+		//-	menu--open: бургер,
+		//-	search--open: мобильный поиск,
+		//-	search-desktop--open: десктопный поиск,
+		//-	header-catalog--open: десктопный каталог шапки,
+		//-	catalog-mobile--open: мобильный каталог шапки,
+		//- }
+		
+		//- bodyClass = 'ui-kit menu--open search--open desktop-search--open header-catalog--open mobile-catalog--open'
+		//-
+		bodyClass = 'ui-kit'
+
+		style = 'style-ui-kit';
+		scripts = ['script-ui-kit'];
+
+		headerType = 'empty';
+		footerType = 'empty';
+
+block main
+	.container
+		h1.title UI-kit
+		
+		section.section.cookies
+			h2.section__header.cookies__header Сообщение cookie
+				.demo-list.demo-list__cookies
+					.demo-group
+						+cookie()
+		
+		section.section.forms
+			h2.section__header.forms__header Микрополя
+
+			.demo-list.demo-list__microfield
+				.demo-group
+					+microfield('1')
+					+microfield().js-invalid
+
+		section.section.forms
+			h2.section__header.forms__header Элементы форм
+			
+			.demo-list.demo-list__field
+				.demo-group
+					+form('Базовая форма', 'Описание базовой формы', '#', 'base', 'post', 'application/x-www-form-urlencoded')
+						block fields
+							span.form__label Необязательное поле
+							+field('text', 'field', false, '', 'Необязательное поле', '', false, false)
+							span.form__label Введите имя
+							+field('text', 'username', true, '', 'Имя', '', false, false).form__field.required
+							span.form__label Введите email
+							+field('email', 'email', true, '', 'Email', '', false, false).form__field.required
+							span.form__label Введите телефон
+							+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99','', false, false).form__field.required
+							span.form__label Введите пароль
+							+field('password', 'password', true, '', 'Пароль', '', false, false).form__field.required
+							+checkbox('Подтверждаю', 'confirm', true, false, false, false).form__field.required
+						block buttons
+							button.button.form__submit.js-form-submit(type="submit")
+								span.button__caption Отправить
+							button.button.form__reset.js-form-reset(type="reset")
+								span.button__caption Очистить	
+								
+							
+			
+			.demo-list.demo-list__field
+				.demo-group
+					p Необязательное поле
+					+field('text', 'field', false, '', 'placeholder', '', false, false)
+					
+					p Отключенное поле
+					+field('text', 'field', true, '', 'placeholder', '', false, true).field--disabled
+					
+					p Валидное поле
+					+field('text', 'field', true, 'value', 'placeholder', '', false, false).js-valid
+					
+					p Невалидное поле в фокусе
+					+field('text', 'field', true, '', 'placeholder', '', false, false).js-invalid.field--focus
+					
+					p Невалидное поле
+					+field('text', 'field', true, '', 'placeholder', '', false, false).js-invalid
+					
+					p Поле в фокусе
+					+field('text', 'field', true, '', 'placeholder', '', false, false).field--focus
+					
+					p Поле по умолчанию
+					+field('text', 'field', true, '', 'placeholder', '', false, false)
+			
+			.demo-list.demo-list__radio
+				.demo-group
+					//- Порядок параметров: требуемый, отключенный, выбранный
+					+radio('Раз', 'group', false, false, false, true)
+					+radio('Два', 'group', false, false, false, false)
+					+radio('Три', 'group', false, false, false, false)
+					+radio('Четыре', 'group', false, false, false, false)
+			
+			.demo-list.demo-list__checkbox
+				.demo-group
+					//- Порядок параметров: требуемый, отключенный, выбранный
+					+checkbox('Чекбокс по умолчанию', 'checkbox', true,  false, false, false)
+					+checkbox('Выбранный чекбокс', 'checkbox', true, false, false, true)
+					+checkbox('Отключенный чекбокс', 'checkbox',true, false, true, false)
+					+checkbox('Отключенный выбранный чекбокс','checkbox', true, true, true, true)
+			
+			.demo-list.demo-list__checkbox
+				.demo-group
+					+counter({ value: 2, min: 0, max: 10 })
+
+			.demo-list.demo-list__checkbox
+				.demo-group
+					+switch()
+		section.section.generic-tabs-area
+			h2.section__header.generic-tabs-area__header Базовые табы
+			include ../../components/tabs/tabs-generic
+		
+		section.section.tip-list
+			h2.section__header.icon-list__header Tips
+			.demo-list.demo-list__tips
+				.demo-group
+					+tip('', 'Базовый ярлык')
+					+tip('', 'Акции')
+					+tip('tip--yellow', 'Хиты')
+					+tip('tip--orange', 'Скидки')
+					+tip('tip--red', 'Распродажа')
+					+tip('tip--burgunby', 'Тренды')
+					+tip('tip--green', 'Новинки')
+					+tip('tip--blue', 'Спецпредложения')
+					+tip('tip--gradient', '-10%')
+
+		section.section.icon-list
+			h2.section__header.icon-list__header Иконки макета		
+			.demo-list.demo-list__icons
+				.demo-group
+					+icon('round-button-icon')
+					+icon('search')
+					+icon('profile')
+					+icon('chevron_down')
+					+icon('chevron_up')
+					+icon('chevron_left')
+					+icon('chevron_right')
+					+icon('arrow-left')
+					+icon('arrow-right')
+					+icon('arrow-up')
+					+icon('arrow-down')
+					+icon('l_arrow-down')
+					+icon('l_arrow-right')
+					+icon('l_arrow-up')
+					+icon('l_arrow-left')
+					+icon('base-send-email')
+					+icon('bell')
+					+icon('box-plus')
+					+icon('burger')
+					+icon('busket')
+					+icon('catalog')
+					+icon('home')
+					+icon('callback')
+					+icon('check')
+					+icon('close')
+					+icon('compare')
+					+icon('compare-fill')
+					+icon('favourites')
+					+icon('favourites-fill')
+					+icon('filter')
+					+icon('question')
+					+icon('settings')
+					+icon('star')
+					+icon('telegram')
+					+icon('vk')
+					+icon('youtube')
+					+icon('catalog-item_1')
+					+icon('catalog-item_2')
+					+icon('catalog-item_3')
+					+icon('catalog-item_4')
+					+icon('profile', { type: 'multi' })
+					+icon('busket', { type: 'multi' })
+					+icon('catalog', { type: 'multi' })
+					+icon('compare', { type: 'multi' })
+					+icon('favourites', { type: 'multi' })
+					+icon('home', { type: 'multi' })
+					+icon('star-half', { type: 'multi' })
+					+icon('telegram', { type: 'multi' })
+					+icon('vk', { type: 'multi' })
+					+icon('youtube', { type: 'multi' })
+
+		section.section.button-list
+			h2.section__header.icon-list__header Кнопки
+			
+				h3 Для плашки с товаром
+			.demo-list.demo-list__buttons
+				.demo-group
+	
+					button.button(type="button")
+						span.button__caption Базовая кнопка
+	
+					button.button.button-to-busket(type="button")
+						span.button__caption В корзину
+						+icon('check')
+	
+	
+					button.button.button-to-busket.button-to-busket--selected(type="button")
+						span.button__caption В корзину
+						+icon('check')
+
+			
+			h3 Для карточки товара
+			.demo-list.demo-list__buttons
+				.demo-group
+	
+					button.card-button(type="button")
+						span.button__caption Базовая кнопка 				
+	
+					button.card-button.card-button--to-basket(type="button")
+						span.button__caption В корзину
+	
+					button.card-button.card-button--black(type="button")
+						span.button__caption Купить сейчас
+	
+					button.card-button.card-button--check-in(type="button")
+						span.button__caption Оформить		
+	
+					button.card-button.card-button--orange(type="button")
+						span.button__caption В корзину		
+
+			h3 Скачать
+			.demo-list.demo-list__buttons
+				.demo-group
+	
+					button.button.button-download(type="button")
+						span.button__caption Скачать
+						+icon('check')
+	
+					button.button.button-download.button-download--done(type="button")
+						span.button__caption Скачать
+						+icon('check')
+
+			h3 Primary
+			.demo-list.demo-list__buttons
+				.demo-group
+					button.button-primary(type="button")
+						span.button__caption Базовая кнопка
+	
+					button.button-primary.button-primary--black(type="button")
+						span.button__caption Оформить
+	
+					button.button-primary.button-primary--disabled(type="button")
+						span.button__caption Оформить	
+	
+					button.button-primary.button-primary--red(type="button")
+						span.button__caption Сообщить о поступлении	
+	
+					button.button-primary.button-primary-filter(type="button")
+						span.button__caption Сбросить фильтры	
+	
+					button.button-primary.button-primary-filter.button-primary-filter--disable(type="button")
+						span.button__caption Сбросить фильтры	
+	
+					button.button-primary.button-primary--login(type="button")
+						span.button__caption Войти или зарегистрироваться
+
+			h3 Кнопки управления
+			.demo-list.demo-list__buttons
+				.demo-group
+
+					button.button.button-catalog(type="button")
+						+icon('burger')
+						span.button__caption Каталог
+						+icon('close')
+
+					button.button.button--red(type="button")
+						span.button__caption Подробнее
+
+					button.button.button-catalog.button-catalog--open(type="button")
+						+icon('burger')
+						span.button__caption Каталог
+						+icon('close')
+
+					button.button.button--callback(type="button")
+						+icon('callback')
+						span.button__caption Заказать обратный звонок
+
+					button.button-primary.button-primary-add-goods(type="button")
+						+icon('box-plus')
+						span.button__caption Добавить товары
+
+					button.button-primary.button-primary-add-goods.button-primary-add-goods--disabled(type="button")
+						+icon('box-plus')
+						span.button__caption Добавить товары
+
+					button.button-primary.button-primary-add-goods.button-primary-add-goods--short(type="button")
+						+icon('box-plus')
+						span.button__caption Добавить товары
+
+					button.button-primary.button-primary-add-goods.button-primary-add-goods--short.button-primary-add-goods--disabled(type="button")
+						+icon('box-plus')
+						span.button__caption Добавить товары
+
+					button.button-primary.button-primary-send(type="button")
+						+icon('base-send-email')
+						span.button__caption Подписаться
+
+				.demo-group
+					button.color-button(type="button") Смотреть все
+					button.button-control(type="button")
+						+icon('chevron_right')
+
+					button.button-control(type="button")
+						+icon('chevron_left')
+
+					button.button-control.button-control--white(type="button")
+						+icon('chevron_right')
+
+					button.button-control.button-control--white(type="button")
+						+icon('chevron_left')
+
+					button.button-control.button-control--close(type="button")
+						+icon('close')
+
+					button.button-control.button-control--white.button-control--close(type="button")
+						+icon('close')
+
+					button.button-control.button-control--slider.button-control--no-border(type="button")
+						+icon('l_arrow-left')
+
+					button.button-control.button-control--slider.button-control--no-border(type="button")
+						+icon('l_arrow-right')
+
+					button.button-control.button-control--slider(type="button")
+						+icon('l_arrow-left')
+
+					button.button-control.button-control--slider(type="button")
+						+icon('l_arrow-right')
+
+					button.button-control.button-control--slider.button-control--white(type="button")
+						+icon('l_arrow-left')
+
+					button.button-control.button-control--slider.button-control--white(type="button")
+						+icon('l_arrow-right')
+
+
+			h3 Микрокнопки
+			.demo-list.demo-list-bit-buttons
+
+				.demo-group
+
+					+bitButton({
+						id: 'profile',
+						contains: 1,
+						type: 'button',
+						classname: 'js-active',
+						caption: 'Профиль'
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'link',
+						href: '#',
+						title: 'Профиль',
+						classname: 'bit-button__profile',
+						caption: 'Профиль'
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'button',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'button',
+						classname: 'bit-button--white',
+						caption: 'Профиль'
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'button',
+						classname: 'bit-button--white',
+						title: 'Профиль',
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'button',
+						classname: 'bit-button--yellow',
+						title: 'Профиль',
+					})
+
+					+bitButton({
+						id: 'profile',
+						type: 'button',
+						classname: 'bit-button--login',
+						title: 'Профиль',
+						login: './images/content/logged_in.jpg'
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'busket',
+						contains: 1,
+						type: 'button',
+						classname: 'js-active',
+						caption: 'Корзина'
+					})
+
+					+bitButton({
+						id: 'busket',
+						type: 'link',
+						href: '#',
+						title: 'Корзина',
+						classname: 'bit-button__profile',
+						caption: 'Корзина'
+					})
+
+					+bitButton({
+						id: 'busket',
+						type: 'button',
+						classname: 'bit-button--white',
+						caption: 'Корзина'
+					})
+
+					+bitButton({
+						id: 'busket',
+						type: 'button',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'busket',
+						type: 'button',
+						classname: 'bit-button--white',
+						title: 'Корзина',
+					})
+
+					+bitButton({
+						id: 'busket',
+						type: 'button',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'catalog',
+						contains: 1,
+						type: 'button',
+						classname: 'js-active',
+						caption: 'Каталог'
+					})
+
+					+bitButton({
+						id: 'catalog',
+						type: 'link',
+						href: '#',
+						title: 'Каталог',
+						classname: 'bit-button__profile',
+						caption: 'Каталог'
+					})
+
+					+bitButton({
+						id: 'catalog',
+						type: 'button',
+						classname: 'bit-button--white',
+						caption: 'Каталог'
+					})
+
+					+bitButton({
+						id: 'catalog',
+						type: 'button',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'catalog',
+						type: 'button',
+						classname: 'bit-button--white',
+						title: 'Каталог',
+					})
+
+					+bitButton({
+						id: 'catalog',
+						type: 'button',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'home',
+						type: 'link',
+						href: '#',
+						title: 'Главная',
+						classname: 'js-active',
+						caption: 'Главная'
+					})
+
+					+bitButton({
+						id: 'home',
+						type: 'link',
+						href: '#',
+						title: 'Главная',
+						classname: '',
+						caption: 'Главная'
+					})
+
+					+bitButton({
+						id: 'home',
+						type: 'link',
+						href: '#',
+						title: 'Главная',
+						classname: 'bit-button--white',
+						caption: 'Главная'
+					})
+
+					+bitButton({
+						id: 'home',
+						caption: 'Главная',
+						type: 'link',
+						href: '#',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+
+				.demo-group
+
+					+bitButton({
+						id: 'compare',
+						contains: 2,
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'compare',
+						contains: 2,
+						type: 'button',
+						title: 'Сравнить',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'compare',
+						type: 'button',
+						title: 'Сравнить',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'compare',
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'compare',
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'js-active no-border-color bit-button--white',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'favourites',
+						contains: 2,
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'favourites',
+						contains: 2,
+						type: 'button',
+						title: 'Избранное',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'favourites',
+						type: 'button',
+						title: 'Избранное',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'favourites',
+						type: 'button',
+						title: 'Избранное',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'favourites',
+						type: 'button',
+						title: 'Избранное',
+						classname: 'js-active no-border-color bit-button--white',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'search',
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'search',
+						type: 'button',
+						title: 'Поиск',
+						classname: '',
+					})
+
+					+bitButton({
+						id: 'search',
+						type: 'button',
+						title: 'Поиск',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'search',
+						type: 'button',
+						title: 'Поиск',
+						classname: 'bit-button--red bit-button--no-border',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'bell',
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'bell',
+						contains: 3,
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'bell',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'bell',
+						type: 'button',
+						title: 'Уведомление',
+						classname: '',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'callback',
+						type: 'button',
+						title: 'Сравнить',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'callback',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--yellow',
+					})
+
+					+bitButton({
+						id: 'callback',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'callback',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--no-border',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'vk',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'vk',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'js-active no-border-color bit-button--white',
+					})
+
+					+bitButton({
+						id: 'telegram',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'telegram',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'js-active no-border-color bit-button--white',
+					})
+
+					+bitButton({
+						id: 'youtube',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'bit-button--white',
+					})
+
+					+bitButton({
+						id: 'youtube',
+						type: 'button',
+						title: 'Уведомление',
+						classname: 'js-active no-border-color bit-button--white',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'burger',
+						type: 'button',
+						title: 'Бургер',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'burger',
+						contains: 3,
+						type: 'button',
+						title: 'Бургер',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'settings',
+						type: 'button',
+						title: 'Настройки',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'settings',
+						contains: '!',
+						type: 'button',
+						title: 'Настройки',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+				.demo-group
+
+					+bitButton({
+						id: 'filter',
+						type: 'button',
+						title: 'Фильтр',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+					+bitButton({
+						id: 'filter',
+						contains: 3,
+						type: 'button',
+						title: 'Фильтр',
+						classname: 'bit-button--white bit-button--icon-black',
+					})
+
+
+			h3 Карточка
+			.demo-list.demo-list-bit-buttons
+
+				.demo-group
+					+card({
+						caption: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный',
+						description: '32 класс, толщина 8 мм, Без фаски',
+						image: {
+							src: 'recomendations/recommend-item_1',
+							alt: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный'
+						},
+						price: {
+							current: '2 420',
+							old: '4 200',
+							discount: '-10%'
+						}
+					})
+					
+					+cardInspiration({
+						caption: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный',
+						description: `<span>32 класс, толщина 8 мм,</span><span> Без фаски</span>`,
+						image: {
+							src: 'recomendations/recommend-item_1',
+							alt: 'Ламинат Swiss Krono Home Standard D7049 WG Дуб Милано Натуральный'
+						},
+						price: {
+							current: '2 420',
+							old: '4 200',
+							discount: '-10%'
+						}
+					})
+
+			h3.hide--desktop Мобильная навигация
+			.demo-list.demo-mobile-navigation.hide--desktop
+				.demo-group
+					//+mobileNavigation('fixed')
+					+mobileNavigation()

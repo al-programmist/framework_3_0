@@ -1,0 +1,33 @@
+mixin field(type, name, inValidator, value, placeholder, mask, required, disabled)
+	.field.js-field&attributes(attributes)
+		label.field__wrapper
+			if mask
+				input.field__input(
+					class={'js-validate': inValidator === true}, 
+					type=type, 
+					name=name,
+					value=value,
+					disabled=disabled,
+					required=required,
+					data-mask=mask,
+					autocomplete="off"
+				).js-mask
+			else
+				input.field__input(
+					class={'js-validate': inValidator === true},
+					type=type,
+					name=name,
+					value=value,
+					disabled=disabled,
+					required=required,
+					autocomplete="off"
+				)
+			span.field__placeholder !{placeholder}
+				span.required *
+		
+		//- Место для кнопки	
+		.field__widget
+			if block
+				block
+		//- Cooбщение для валидации		
+		span.error-message.js-error-message

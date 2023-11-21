@@ -1,0 +1,63 @@
+.checkout-payment
+	display grid
+	grid-template-areas 'icon title' 'icon description'
+	grid-template-columns 38px 1fr
+	align-content start
+	gap 3px 10px
+	padding 10px
+	padding-right 0
+	background-color var(--color-option-gray)
+	border 2px solid var(--color-option-gray)
+	border-radius 5px
+	cursor pointer
+	&:has(&__input:checked)
+		--before-background-color var(--color-option-gray)
+		background-color var(--color-primary-white)
+		border-color var(--color-primary)
+	@supports @css{ not selector(:has()) }
+		&--active
+			--before-background-color var(--color-option-gray)
+			background-color var(--color-primary-white)
+			border-color var(--color-primary)
+	&--online
+		--after-width 32px
+		--after-height 20px
+		--after-mask-image $maskImage(payment-online, mono)
+	&--instalment
+		--after-width 24px
+		--after-height 22px
+		--after-mask-image $maskImage(payment-instalment, mono)
+	&--cash
+		--after-width 32px
+		--after-height 20px
+		--after-mask-image $maskImage(payment-cash, mono)
+	&--invoice
+		--after-width 25px
+		--after-height 29px
+		--after-mask-image $maskImage(payment-invoice, mono)
+	&--hidden
+		display none
+	+before()
+		grid-area icon
+		width 38px
+		height 38px
+		background-color var(--before-background-color, var(--color-primary-white))
+		border-radius 5px
+	+after()
+		grid-area icon
+		place-self center
+		width var(--after-width)
+		height var(--after-height)
+		background-color var(--color-primary)
+		mask-image var(--after-mask-image)
+		mask-repeat no-repeat
+		mask-position center
+		mask-size cover
+	&__title
+		grid-area title
+		font-size 14px
+		font-weight 600
+	&__description
+		grid-area description
+		font-size 12px
+		color var(--color-option-dark-gray)

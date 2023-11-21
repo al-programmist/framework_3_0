@@ -1,0 +1,74 @@
+.radio {
+	display: inline-block
+
+	cursor: pointer
+
+	&__inner {
+		display: flex
+		align-items: center
+		justify-content: flex-start
+	}
+	
+	&__indicator {
+		position: relative
+
+		display: inline-flex
+		align-items: center
+		justify-content: center;
+		width: 20px
+		height: 20px
+		overflow: hidden;
+
+		border: 1px solid $color.option.dark-gray
+		border-radius: 70px
+
+		transition: border-color $transition.primary,
+						background-color $transition.primary
+	
+		&::before {
+			position: absolute
+			z-index: 1
+
+			display: block 
+			width: 10px
+			height: 10px
+
+			background-color: $color.primary-white
+			border-radius: 70px
+			opacity: 0
+
+			transition: opacity $transition.primary;
+
+			content: ''
+		}
+	}
+	
+	&__input:checked + .radio__indicator {
+		background-color: $color.primary-yellow
+		border-color: @background-color
+		
+		&::before {
+			opacity: 1
+		}
+	}
+	
+	&__input[disabled]  + .radio__indicator {
+		background-color: $color.option.gray
+		border-color: @background-color
+		cursor: default
+	}
+	
+	&__input[disabled]  ~ .radio__caption {
+		color: $color.option.dark-gray
+
+		cursor: default
+	}
+	
+	&__caption {
+		margin-left: 8px
+
+		transition: color $transition.primary
+	}
+	
+
+}

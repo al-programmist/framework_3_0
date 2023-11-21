@@ -1,0 +1,42 @@
+[data-simplebar]
+	padding-right: 10px
+
+.simplebar-scrollbar
+	cursor: pointer
+
+	&::before
+		top: 0
+		bottom: 0
+		left: 50%
+
+		width: 2px
+
+		background-color: $color.text.primary
+		border-radius: 2px
+		transform: translateX(-50%)
+		opacity: 1
+
+.simplebar-scrollbar.simplebar-visible::before
+	opacity: 1
+
+.simplebar-track
+	&.simplebar-vertical
+		width: 10px
+
+	&.simplebar-vertical::before
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 50%
+
+		width: 2px
+
+		background-color: $color.line.light
+		border-radius: 2px
+		transform: translateX(-50%)
+
+		content: ''
+
+	&.simplebar-hover
+		.simplebar-scrollbar::before
+			opacity: 1

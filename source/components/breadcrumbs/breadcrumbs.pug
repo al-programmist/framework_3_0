@@ -1,0 +1,38 @@
+include ../icon/icon
+
+mixin breadcrumbs(data = [], options = {})
+	-
+		options = {
+			mode: options.mode || 'base' // base || back || title
+		}
+
+	nav.breadcrumbs&attributes(attributes)
+		.container
+			ul
+				if (options.mode == 'base')
+					each item in data
+						-
+							item = {
+								href: item.href || '',
+								name: item.name || '',
+							}
+
+						li.breadcrumbs__item
+							if (item.href)
+								a(class="breadcrumbs__link" href= item.href)= item.name
+							else
+								span.breadcrumbs__current= item.name
+
+				if (options.mode == 'back')
+					li.breadcrumbs__item
+						a(class="breadcrumbs__back" href= data[0].href)
+							span.breadcrumbs__icon
+								+icon('chevron_left')
+							span= data[0].name
+
+				if (options.mode == 'title')
+					li.breadcrumbs__item
+						h1.breadcrumbs__title
+							a(class="breadcrumbs__icon" href= data[0].href)
+								+icon('chevron_left')
+							span= data[0].name

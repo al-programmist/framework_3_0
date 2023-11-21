@@ -1,0 +1,36 @@
+include ../icon/icon
+.tabs.js-tabs
+	.tabs__header.tabs-header
+		.tabs-header__list.tabs-captions
+			button.tabs-captions__item.tabs-caption.js-tabs-caption.js-active(type="button" data-target="1") Заголовок 1
+			button.tabs-captions__item.tabs-caption.js-tabs-caption(type="button" data-target="2") Заголовок 2
+			button.tabs-captions__item.tabs-caption.js-tabs-caption(type="button" data-target="3") Заголовок 3
+			button.tabs-captions__item.tabs-caption.js-tabs-caption(type="button" data-target="4") Заголовок 4
+		.tabs-header__widgets.tabs-widgets
+			button.button-control.tabs-widgets__button.js-slider--prev(type="button")
+				+icon('l_arrow-left')
+			button.button-control.tabs-widgets__button.js-slider--next(type="button")
+				+icon('l_arrow-right')
+			
+	.tabs__content.tabs-content
+		.tabs-content__inner.tabs-pages
+			.tabs-pages__item.tabs-page.js-tabs-page.js-active(data-page="1")
+				.tabs-page__inner
+					.page-wrapper
+						include pages/page-1
+
+			.tabs-pages__item.tabs-page.js-tabs-page(data-page="2")
+				.tabs-page__inner
+					.page-wrapper
+						include pages/page-2
+
+			.tabs-pages__item.tabs-page.js-tabs-page(data-page="3")
+				.tabs-page__inner
+					.page-wrapper
+						include pages/page-3
+
+			.tabs-pages__item.tabs-page.js-tabs-page(data-page="4")
+				.tabs-page__inner
+					.page-wrapper
+						include pages/page-4
+

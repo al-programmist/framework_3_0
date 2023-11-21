@@ -1,0 +1,32 @@
+include ../counter/counter
+
+mixin cartProduct(item)
+	.cart-product.js-cart-product(
+		data-area-per-pack= item.areaPerPack
+		data-price-old= item.price.old
+		data-price-current= item.price.current
+		data-id= item.id
+		data-weight= item.weight
+		)&attributes(attributes)
+		.cart-product__title
+			strong.cart-product__category !{item.category}
+			|  
+			span.cart-product__name !{item.name}
+		.cart-product__code Код товара: !{item.code}
+		+picture(item.image, { format: 'jpg' }).cart-product__image
+		dl.cart-product__properties
+			each prop in item.properties
+				dt.cart-product__property-name !{prop.name}
+				dd.cart-product__property-value !{prop.value}
+		.cart-product__value
+			.cart-product__value-label Количество упаковок:
+			+counter({ min: 1, value: item.value }).cart-product__counter.cart-product__counter--packs
+		.cart-product__value
+			.cart-product__value-label Итоговая площадь (м#[sup 2]):
+			+counter({ min: item.areaPerPack, value: item.value * item.areaPerPack }).cart-product__counter.cart-product__counter--area
+		.cart-product__price
+			.cart-product__price-final #[span !{item.price.current}] ₽
+			if item.price.old
+				.cart-product__price-old #[span !{item.price.old}] ₽/м#[sup 2]
+			button(type='button').cart-product__button.cart-product__button--like
+			button(type='button').cart-product__button.cart-product__button--delete

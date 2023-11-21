@@ -1,0 +1,213 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p
+	margin-top: 0;	
+
+.hide
+	display: none !important
+
+.hide--mobile
+	+media-max(tablet)
+		display: none !important
+
+.hide--tablet
+	+media-interval(tablet, desktop)
+		display: none !important
+
+.hide--desktop
+	+media(desktop)
+		display: none !important
+
+.visually-hidden {
+	position: absolute;
+
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+
+	white-space: nowrap;
+
+	border: 0;
+
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+}
+
+.visually-hidden--devices {
+	+media-max(desktop) {
+		position: absolute;
+
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+
+		border: 0;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+	
+.visually-hidden--mobile {
+	+media-max(tablet) {
+		position: absolute;
+
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+
+		border: 0;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.visually-hidden--tablet {
+	+media(tablet) {
+		position: absolute;
+
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+
+		border: 0;
+		visibility: hidden;
+		opacity: 0;    
+	}
+}
+
+.visually-hidden--desktop {
+	+media(desktop) {
+		position: absolute;
+
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+
+		border: 0;
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.page-image {
+	position: relative;
+
+	flex-grow: 0;
+	flex-shrink: 0;
+	overflow: hidden;
+
+	background-color: $color.option.dark-gray;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Cpath d='M54.518 6.40479H8.4839C6.37409 6.40701 4.3513 7.24597 2.85924 8.73764C1.36718 10.2293 0.527682 12.2519 0.524902 14.3617V48.6358C0.527126 50.746 1.36638 52.7691 2.8585 54.2612C4.35062 55.7533 6.37373 56.5926 8.4839 56.5948H54.518C56.6278 56.592 58.6504 55.7525 60.1421 54.2605C61.6337 52.7684 62.4727 50.7456 62.4749 48.6358V14.3617C62.4716 12.2524 61.6322 10.2305 60.1407 8.73899C58.6492 7.2475 56.6273 6.40812 54.518 6.40479ZM59.3249 48.6358C59.3238 49.9105 58.8171 51.1327 57.9159 52.0343C57.0147 52.9359 55.7927 53.4431 54.518 53.4448H8.4839C7.20882 53.4437 5.98628 52.9367 5.08465 52.035C4.18303 51.1334 3.67601 49.9109 3.6749 48.6358V41.2648L18.146 26.8042C18.9692 25.9999 20.4056 25.9768 21.1763 26.8672L40.1393 47.5564C41.5295 49.0663 43.8521 46.9537 42.4619 45.427L38.1674 40.7398L43.7849 34.6771C44.5514 33.8077 45.9983 33.7909 46.8026 34.6183L59.3249 47.1658V48.6358ZM59.3249 42.7117L49.0349 32.4028C48.5355 31.9039 47.9406 31.5109 47.2858 31.2473C46.6311 30.9836 45.9298 30.8546 45.2241 30.8682C44.5184 30.8817 43.8226 31.0374 43.1784 31.326C42.5342 31.6146 41.9548 32.0301 41.4749 32.5477L36.0338 38.4277L23.4968 24.7525C21.5963 22.5622 17.9087 22.4509 15.92 24.5803L3.6749 36.8107V14.3617C3.67657 13.087 4.18383 11.865 5.0854 10.9638C5.98696 10.0626 7.20918 9.5559 8.4839 9.55479H54.518C55.7922 9.55701 57.0136 10.0642 57.9145 10.9651C58.8155 11.8661 59.3227 13.0875 59.3249 14.3617V42.7117Z' fill='white'/%3E%3Cpath d='M35.4246 14.9351C27.4068 15.1388 27.4131 26.8715 35.4204 27.0899C43.4361 26.8904 43.4382 15.1409 35.4246 14.9351ZM35.4246 23.9399C31.5732 23.8748 31.5795 18.1628 35.4204 18.083V18.0851C39.2697 18.1481 39.2718 23.8727 35.4246 23.9399Z' fill='white'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50px 40px;
+	
+	picture {
+		position: absolute
+		inset: 0
+	}
+	
+	+media(tablet) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+
+		background-size: 61px 50px;
+	}
+	
+	+media(desktop) {
+		background-size: 63px 63px;
+	}
+
+}
+//stylelint-disable	
+	
+picture
+	img
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: center
+
+input::input-placeholder {
+	opacity: 1;
+
+	transition: opacity $transition.field;
+}
+
+input::placeholder {
+	opacity: 1;
+
+	transition: opacity $transition.field;
+}
+
+input:placeholder {
+	opacity: 1;
+
+	transition: opacity $transition.field;
+}
+
+input:input-placeholder {
+	opacity: 1;
+
+	transition: opacity $transition.field;
+}
+
+input:focus::input-placeholder {
+	opacity: 0;
+
+	transition: opacity $transition.field;
+}
+
+input:focus::placeholder {
+	opacity: 0;
+
+	transition: opacity $transition.field;
+}
+
+input:focus:placeholder {
+	opacity: 0;
+
+	transition: opacity $transition.field;
+}
+
+input:focus:input-placeholder {
+	opacity: 0;
+
+	transition: opacity $transition.field;
+}
+//stylelint-enable	
+
+.page {
+	padding-top: 182px
+
+	@media screen and (min-width: 467px) {
+		padding-top: 168px
+	}
+	
+	+media(tablet) {
+		padding-top: 195px
+	}
+	
+	+media(laptop) {
+		padding-top: 195px  
+	}
+	
+	+media(desktop) {
+		padding-top: 208px
+	}
+}

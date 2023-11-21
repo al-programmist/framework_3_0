@@ -1,0 +1,99 @@
+.cart-empty
+	display: grid
+	grid-template-rows: repeat(3, min-content) 50px 0fr
+	grid-template-columns: 1fr 1fr 1fr
+	justify-content: center
+	justify-items: center
+	width: @css{ min(100%, 800px) }
+
+	isolation: isolate
+
+	transition: grid-template-columns var(--transition-primary), grid-template-rows var(--transition-primary)
+	row-gap: 32px
+	margin-inline: auto
+
+	+media(laptop)
+		padding-block: 76px
+
+	&--field
+		--button-opacity: 0
+		--button-pointer-events: none
+		--input-opacity: 1
+		--input-pointer-events: auto
+		grid-template-columns: 0fr 1fr 0fr
+
+	&--table
+		--table-opacity: 1
+		--table-pointer-events: auto
+		grid-template-rows: repeat(3, min-content) 50px 1fr
+
+	+before()
+		grid-row: 1/2
+		grid-column: 1/-1
+		width: 228px
+		height: 228px
+		$background(cart-empty)
+
+	&__subtitle
+		grid-row: 2/3
+		grid-column: 1/-1
+
+		font-weight: 700;
+		font-size: 24px
+
+	&__description
+		grid-row: 3/4
+		grid-column: 1/-1
+
+		text-align: center
+
+	&__button
+		z-index: 2
+
+		grid-row: 4/5
+		grid-column: 1/-1
+
+		opacity: var(--button-opacity, 1)
+
+		transition: opacity var(--transition-primary);
+
+		pointer-events: var(--button-pointer-events, auto)
+
+	&__input
+		z-index: 1
+
+		grid-row: 4/5
+		grid-column: 2/3
+		width: 100%
+		height: 100%
+
+		opacity: var(--input-opacity, 0)
+
+		transition: opacity var(--transition-primary)
+		transition-delay: var(--transition-primary);
+
+		pointer-events: var(--input-pointer-events, none)
+
+	&__table
+		grid-row: 5/6
+		grid-column: 1/-1
+		justify-self: stretch
+		margin-top: -24px
+		margin-bottom: 10px
+		overflow: hidden
+
+		border-radius: 4px
+		opacity: var(--table-opacity, 0)
+
+		transition: opacity var(--transition-primary);
+
+		pointer-events: var(--table-pointer-events, none)
+		+media-max(tablet)
+			border 1px solid var(--color-basic-yellow)
+		+media(tablet)
+			box-shadow: var(--shadow-1)
+	&__table-inner
+		display: flex
+		flex-direction: column
+		gap: 16px
+		padding: 12px

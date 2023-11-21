@@ -1,0 +1,33 @@
+.counter
+	display grid
+	grid-template-columns 34px calc(100% - 68px) 34px
+	font-size 16px
+	border-radius 8px
+	border 1px solid var(--color-option-dark-gray)
+	background-color var(--color-background-primary)
+	cursor text
+	&__button
+		width 34px
+		//padding 12px 12px
+		font-weight bold
+		&--disabled
+			color var(--color-option-gray)
+			cursor default
+	&__block
+		display grid
+		grid-template-columns repeat(2, min-content)
+		justify-content center
+		justify-self center
+		cursor inherit
+	&__editable
+		width min-content
+		min-width 0
+		overflow hidden
+		padding 11px 2px 12px
+		text-align right
+		text-overflow clip
+		white-space nowrap
+		&:focus
+			outline none
+	&__field
+		display none

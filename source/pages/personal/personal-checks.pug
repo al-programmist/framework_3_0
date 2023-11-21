@@ -1,0 +1,58 @@
+extends ../../config/pug/layout
+
+include ../../components/modal/modal
+include ../../components/modal/modal-login/modal-login
+include ../../components/modal/modal-city/modal-city
+include ../../components/modal/modal-callback/modal-callback
+include ../../components/modal/modal-empty/modal-empty
+include ../../components/modal/modal-message/modal-message
+include ../../components/modal/modal-message-success-login/modal-message-success-login
+include ../../components/modal/modal-cookies/modal-cookies
+
+include ../../components/breadcrumbs/breadcrumbs
+include ../../components/personal/personal-nav/personal-nav
+include ../../components/personal/personal-checks/personal-checks
+
+block append config
+	-
+		bodyClass = 'main'
+		pageName = 'Электронные чеки';
+		style = 'style-personal';
+		scripts = ['script-personal'];
+
+block variables
+	include ../../data/breabcrumbs/catalog
+	include ../../data/personal/personal-nav
+	include ../../data/personal/personal-checks
+
+block main
+	+breadcrumbs([
+		{
+			href: '#',
+			name: 'Электронные чеки',
+		}
+	], {
+		mode: 'title'
+	})
+
+	.personal.container
+		aside.personal__aside
+			+personal-nav(personalNav, {
+				active: 'Электронные чеки'
+			})
+		main.personal__main
+			+personal-checks(personalChecks)
+
+block modals
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()

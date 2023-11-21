@@ -1,0 +1,11 @@
+include ../../data/mobile-search/mobileSearch
+
+//- Открываем классом .search--open	на body
+.search-mobile
+	.search-mobile__inner
+		.search-mobile__look-for
+			+searchPanelMobile()
+		ul.search-mobile__list
+			each item in mobileSearch
+				li.search-mobile__item
+					a.search-mobile__link(href=`${item.href}` title=`${item.name}`) #{item.name}

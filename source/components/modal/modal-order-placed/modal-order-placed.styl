@@ -1,0 +1,38 @@
+.modal-order-placed
+	+media-max(tablet)
+		inset 0 0 70px
+	.modal__body
+		+media-max(tablet)
+			border-radius 25px 25px 0 0
+	.modal__content
+		position relative
+		display grid
+		grid-template-columns 100%
+		grid-template-rows repeat(5, auto)
+		justify-content center
+		gap 16px
+		padding-bottom 32px
+		+media-max(tablet)
+			border-radius 25px 25px 0 0
+		+before()
+			grid-row 3/5
+			grid-column 1/-1
+			width 400px
+			height 278px
+			margin-left -19px
+			background-image url(../images/order-placed-gift.webp)
+			background-repeat no-repeat
+			background-position top
+			background-size 100% auto
+	&__title
+		grid-column 1/-1
+		grid-row 1/2
+	&__info
+		grid-column 1/-1
+		grid-row 2/3
+	&__button
+		grid-column 1/-1
+		grid-row 4/6
+		justify-self center
+		align-self end
+		max-width calc(100% - 72px)

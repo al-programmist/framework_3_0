@@ -1,0 +1,28 @@
+.button-primary--black
+
+	overflow: hidden;
+
+	color: $color.primary-white
+
+	background-color: $color.primary;
+	border-width: 0;
+
+	transition: border-color $transition.primary;
+	
+	background-gradient($color.gradient.primary)
+	
+	+hover()
+		color: $color.primary-white
+
+		border-color: $color.primary-yellow;
+	
+		&::before
+			opacity: 1;
+	
+	+active()
+		color: $color.primary-white
+
+		border-color: $color.primary-yellow;
+	
+		&::before
+			opacity: 1;

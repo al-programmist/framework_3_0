@@ -1,0 +1,46 @@
+.checkout-delivery
+	position relative
+	display grid
+	grid-template-columns auto auto
+	grid-template-rows min-content 1fr min-content
+	padding 20px
+	background-color var(--color-option-gray)
+	border 2px solid var(--color-option-gray)
+	border-radius 8px
+	&--active
+		background-color var(--color-primary-white)
+		border-color var(--color-primary)
+	&--shipping
+		--before-mask-image $maskImage(delivery-shipping, mono)
+	&--self
+		--before-mask-image $maskImage(delivery-self, mono)
+	+after()
+		grid-column 2/3
+		grid-row 3/4
+		place-self end
+		width 46px
+		height 52px
+		background-color var(--color-primary)
+		mask-image var(--before-mask-image)
+		mask-repeat no-repeat
+		mask-position center
+		mask-size cover
+	&__title
+		grid-column 1/-1
+		grid-row 1/2
+		margin-bottom 10px
+		font-size 16px
+	&__description
+		grid-row 2/3
+		grid-column 1/-1
+		max-width 271px
+		font-size 14px
+		color var(--color-option-dark-gray)
+	&__button
+		grid-column 1/2
+		grid-row 3/4
+		width fit-content
+		height fit-content
+		margin-top 17px
+		padding 11px 36px 12px
+		font-size 14px

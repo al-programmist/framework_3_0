@@ -1,0 +1,37 @@
+extends ../../config/pug/layout
+
+include ../../components/cart-service/cart-service
+include ../../components/cart-empty/cart-empty
+include ../../components/cart-empty-product/cart-empty-product
+include ../../components/slider-products/slider-products
+include ../../components/modal/modal-login/modal-login
+
+block append config
+	-
+		pageName = 'Корзина';
+		bodyClass = 'cart'
+		style = 'style-cart';
+		scripts = ['script-cart'];
+
+block variables
+	include ../../data/products/cart
+block main
+	.container
+		h1.title.page__title Корзина
+		+cartService.page__section
+		+cartEmpty.page__section
+		+sliderProducts('Рекомендуем вам', []).page__section
+
+block modals
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()

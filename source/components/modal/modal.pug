@@ -1,0 +1,20 @@
+include ../icon/icon
+
+mixin modal(id)
+	.modal(
+			id= id
+		)&attributes(attributes)
+		.modal__overlay.js-modal-close
+		.modal__body
+			button.button-control.modal-login__back(type="button").js-modal-login--back
+				+icon('chevron_left')
+			button.button-control.button-control--close.modal__close.js-modal-close(type="button")
+				+icon('close')
+
+			.modal__content
+				if block
+					block
+						
+						
+
+	

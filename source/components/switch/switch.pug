@@ -1,0 +1,6 @@
+mixin switch(item = {}, settings = {})
+	#{item.tag || 'label'}(class= classes('switch', settings))&attributes(attributes)
+		input(type= 'checkbox' name= item.name value= item.value checked= item.checked).switch__input
+		span.switch__switcher
+		if block
+			span.switch__label: block

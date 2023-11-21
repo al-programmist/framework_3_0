@@ -1,0 +1,31 @@
+.cart-add-button
+	display: flex
+	gap: 10px
+	align-items: center
+	padding: 14px 30px 15px
+
+	background-color: var(--color-basic-yellow)
+
+	+media(laptop)
+		display: grid
+		grid-template-columns: 21px var(--cart-add-button-column, 0fr)
+		gap: 0
+
+		transition: grid-template-columns var(--transition-primary), gap var(--transition-primary), opacity var(--transition-primary)
+
+		+hover()
+			--cart-add-button-column: 1fr
+			gap: 10px
+
+	+before()
+		width: 21px
+		height: 21px
+
+		background-color: currentcolor
+		$mask(box-plus, mono)
+
+	span
+		+media(laptop)
+			overflow: hidden
+
+			white-space: nowrap

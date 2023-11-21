@@ -1,0 +1,144 @@
+.cart-product
+	display: grid
+	grid-template-areas: 'title title title' 'image code code' 'image properties properties' 'value-1 value-1 value-2' 'price price price'
+	grid-template-rows: min-content min-content 1fr min-content min-content
+	grid-template-columns: 2fr 1fr 3fr
+	gap: 16px 12px
+	align-items: start
+	padding: 12px
+
+	font-size: 14px
+
+	border-radius: 8px
+	box-shadow: var(--shadow-1)
+
+	+media(tablet)
+		grid-template-areas: \
+			'image code . price' \
+			'image title . value-1' \
+			'image properties . value-2'
+		grid-template-rows: repeat(3, auto)
+		grid-template-columns: 179px auto 34px 1fr
+		gap: 8px 12px
+
+	+media(laptop)
+		grid-template-areas: \
+			'image code price price' \
+			'image title . .' \
+			'image properties value-1 value-2';
+		grid-template-columns: 147px 3fr 2fr 2fr
+
+	&__title
+		grid-area: title
+
+		+media(laptop)
+			margin-top: -16px
+
+	&__code
+		grid-area: code
+
+	&__properties
+		display: grid
+		grid-area: properties
+		grid-template-columns: auto auto
+		gap: 8px
+		align-self: start
+		justify-self: start
+		margin-top: -8px
+
+	&__property-value
+		text-align: right
+
+	&__value
+		:nth-child(1 of &)
+			grid-area: value-1
+
+		:nth-child(2 of &)
+			grid-area: value-2
+
+	&__value-label
+		margin-bottom: 4px
+
+		color: var(--color-option-dark-gray)
+
+		+media-max(mobile)
+			font-size: 12px
+
+	&__image
+		grid-area: image
+
+	&__price
+		display: flex
+		grid-area: price
+		gap: 8px
+		align-items: center
+
+		white-space nowrap
+
+		+media(tablet)
+			gap: 24px
+			justify-content: end
+
+	&__price-old
+		color: var(--color-option-dark-gray)
+		font-size: 12px
+		line-height: 1.8
+		text-decoration: line-through
+
+		+media(tablet)
+			margin-left: -16px
+
+	&__price-final
+		font-weight: 600;
+		font-size: 20px
+
+	&__button
+		transition: background-color var(--transition-primary)
+
+		&:not(&--active)
+			+hover()
+				color: var(--color-option-red)
+
+		&--like
+			display: grid
+			width: 24px
+			height: 20px
+
+			+media-max(mobile)
+				margin-right: 16px
+				margin-left: auto
+
+			&^[-1]--active
+				--before-opacity: 0
+				--after-opacity: 1
+
+			+icon(favourites)
+				grid-row: 1/-1
+				grid-column: 1/-1
+				width: 24px
+				height: 20px
+
+				opacity: var(--before-opacity, 1)
+
+				transition: opacity var(--transition-primary)
+
+			+icon(favourites, multi, after)
+				grid-row: 1/-1
+				grid-column: 1/-1
+				width: 24px
+				height: 20px
+
+				opacity: var(--after-opacity, 0)
+
+				transition: opacity var(--transition-primary)
+
+		&--delete
+			width: 20px
+			height: 20px
+
+			+icon(delete)
+				width: 100%
+				height: 100%
+	&__counter
+		+media-interval(tablet, desktop)
+			width 232px

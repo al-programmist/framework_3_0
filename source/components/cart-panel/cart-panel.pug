@@ -1,0 +1,10 @@
+mixin cartPanel
+	.cart-panel.js-cart-panel&attributes(attributes)
+		.cart-panel__value #[span.js-value] позиций
+		.cart-panel__price.js-total-price 16 500 ₽
+		.cart-panel__price-old.js-old-price 20 200 ₽
+		a(href='#cart-details').cart-panel__button Оформить
+		form.cart-panel__form.js-form
+			+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99','', false, false).form__field.required.cart-panel__field.js-cart-tel
+			button.button-primary.button-primary--disabled.cart-panel__submit.js-cart-submit(type="submit" disabled)
+				span.button__caption Оформить

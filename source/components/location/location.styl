@@ -1,0 +1,32 @@
+.location {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+
+	font-weight: 400
+	font-size: 14px;
+	
+	+hover() {
+		color: $color.option.red
+	}
+	
+	+active() {
+		color: $color.option.red
+	}
+	
+	+media(tablet) {
+		display: inline-flex;
+		order: -1;
+	}
+
+	+media(desktop) {
+		order: 0;
+	}
+	
+	&__caption {
+		margin-right: 7px;
+		margin-left: 5px;
+	}
+	
+}

@@ -1,0 +1,37 @@
+include checkout-pickup-item/checkout-pickup-item
+include checkout-pickup-bubble/checkout-pickup-bubble
+	
+mixin checkoutPickup
+	-
+		const points = [
+			{
+				name: 'Управдом ТЦ «Азбука ремонта»',
+				schedule: 'Открыто до 22:00',
+				address: 'ул. Молодёжная, д. 107Б, оф. 111, ТЦ «Азбука ремонта»',
+			},
+			{
+				name: 'Управдом ТЦ «Южный»',
+				schedule: ' Открыто до 22:00',
+				address: 'ул. Маяковского, д. 41 , ТЦ «Южный»',
+			},
+			{
+				name: 'Управдом ТЦ «Гвоздь»',
+				schedule: 'Открыто до 22:00',
+				address: 'ул. Удмуртская, д. 304, кор. 2, ТЦ «Гвоздь»',
+			},
+			{
+				name: 'Управдом ТЦ «Гвоздь»',
+				schedule: 'Открыто до 22:00',
+				address: 'ул. Удмуртская, д. 304, кор. 2, ТЦ «Гвоздь»',
+			},
+		]
+	.checkout-pickup&attributes(attributes)
+		h2.checkout-pickup__title Пункт выдачи
+		.checkout-pickup__tabs
+			button(type='button').checkout-pickup__tab.checkout-pickup__tab--active Список
+			button(type='button').checkout-pickup__tab Карта
+		.checkout-pickup__list.checkout-pickup__tab-content.checkout-pickup__tab-content--active
+			each point in points
+				+checkoutPickupItem(point).checkout-pickup__item
+		.checkout-pickup__map.checkout-pickup__tab-content#checkout-pickup-map(style='background-color: red; display: flex; justify-content: center; align-items: center;')
+			+checkoutPickupBubble

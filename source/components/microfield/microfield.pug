@@ -1,0 +1,5 @@
+mixin microfield(index)
+	-
+		$index = index || 0;
+	label.microfield.js-microfield
+		input.microfield__input(type="text" minlength="1" maxlength="1" data-index=$index)&attributes(attributes)

@@ -1,0 +1,68 @@
+.checkout-pickup
+	text-align left
+	display grid
+	justify-items center
+	width 100%
+	+media-max(desktop)
+		grid-template-rows min-content min-content auto
+		grid-template-columns auto
+		gap 24px
+		max-height 100%
+	+media(desktop)
+		grid-template-columns repeat(2, 1fr)
+		gap 16px 28px
+		height 406px
+	&__title
+		grid-column 1/-1
+		text-align center
+	&__tabs
+		grid-row 2/3
+		justify-self center
+		display flex
+		background-color var(--color-option-gray)
+		border-radius 8px
+		+media(desktop)
+			display none
+	&__tab
+		position relative
+		flex 1 1 0
+		padding 10px 52px 12px
+		text-align center
+		+before()
+			position absolute
+			bottom 0
+			inset-inline 8px
+			height 4px
+			background-image var(--color-gradient-primary)
+			border-radius 4px 4px 0 0
+			opacity var(--before-opacity, 0)
+			transition opacity var(--transition-primary)
+		&--active
+			--before-opacity 1
+	&__list
+		overflow-y auto
+		max-width 365px
+		padding 2px
+		+media-max(desktop)
+			grid-column 1/-1
+			grid-row 3/4
+			justify-self center
+			max-height 100%
+	&__item
+		& + &
+			margin-top 12px
+		align-self start
+	&__map
+		justify-self stretch
+		border-radius 20px
+		+media-max(desktop)
+			grid-column 1/-1
+			grid-row 3/4
+	&__tab-content
+		+media-max(desktop)
+			opacity 0
+			pointer-events none
+			transition opacity var(--transition-primary)
+		&:is(&--active)
+			opacity 1
+			pointer-events auto

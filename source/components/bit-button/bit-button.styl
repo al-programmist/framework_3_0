@@ -1,0 +1,130 @@
+.bit-button
+	position: relative
+
+	display: inline-flex
+	flex-grow: 0
+	flex-shrink: 0
+	align-items: center
+	justify-content: center
+	width: 40px;
+	max-width: 40px
+	height: 40px
+
+	color: $color.primary
+	font-weight: 400
+	font-size: 12px
+	vertical-align: middle			 
+
+	border: 1px solid @color
+	border-radius: 8px
+
+	&--white
+		color: #fff
+
+		border-color: @color
+		
+	&--red
+		color: $color.option.red
+		
+	&--icon-black
+		color: $color.primary
+	
+	&--no-border
+		border: none
+	
+	&--border-gray
+		border-color: $color.option.gray	
+		
+	&--yellow
+		color: $color.primary
+
+		background-color: $color.primary-yellow;
+		border-color: $color.primary-yellow !important
+		
+	&.js-active
+		color: $color.primary-yellow
+
+		border-color: transparent
+		
+		&::before
+			position: absolute
+
+			display: block
+
+			background: $color.gradient.reverse border-box
+			border: 1px solid transparent
+			border-radius: 8px
+
+			content: ''
+			inset: 0
+			-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+			-webkit-mask-composite: xor
+			mask-composite: exclude
+		
+		&.no-border-color			
+			&::before
+				display: none
+
+	&__contains
+		position: absolute
+		top: 2px
+		right: 2px
+		z-index: 2
+
+		display: flex
+		align-items: center
+		justify-content: center;
+		min-width: 18px;
+		height: 18px
+
+		color: #fff
+		font-weight: 600
+		font-size: 12px
+
+		border-radius: 70px
+		
+		&--visible
+			background-image: $color.gradient.primary
+
+	&__caption
+		position: absolute
+		bottom: -18px
+		left: 50%
+
+		transform: translateX(-50%)	
+	
+	.icon
+		width: 20px
+		height: 20px
+		
+		&.active
+			display: none
+		
+		&.default
+			display: block
+			
+	&--login
+		overflow: hidden;
+
+		background-color: $color.primary-yellow
+		background-repeat: no-repeat
+		background-position: center center
+		background-size: cover;
+		border-color: $color.primary-yellow
+
+		.icon.default
+			display: none	
+			
+	&.js-active
+		.icon
+			width: 20px
+			height: 20px
+		
+			&.active
+				display: block
+			
+			&.default
+				display: none
+		
+			
+			

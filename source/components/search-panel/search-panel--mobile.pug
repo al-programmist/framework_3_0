@@ -1,0 +1,18 @@
+mixin searchPanelMobile(isSearchBack)
+	if (isSearchBack !== 'back')
+		button.button-control.button-control--white.button-control--close.search-mobile__close.js-search-mobile--close(type="button" aria-label="Закрыть")
+			+icon('close')
+	if (isSearchBack === 'back')
+		button.button-control.button-control--white.button-control--close.mobile-catalog__close.js-search-mobile-catalog--close(type="button" aria-label="Закрыть")
+			+icon('close')
+		button.button-control.button-control--white.mobile-catalog__back.js-search-mobile-catalog--back(type="button" aria-label="Назад")
+			+icon('chevron_left')
+	form.search-panel.header-catalog-search__mobile(action="#" method="post")
+		.search-panel__control.search-panel__control--pr
+			input.search-panel__input(type="text" placeholder="Ищу плинтус, ламинат...")
+			+bitButton({
+				id: 'search',
+				type: 'button',
+				title: 'Поиск',
+				classname: 'bit-button--red bit-button--no-border search-button js-catalog-search--mobile',
+			})(aria-label="Найти")

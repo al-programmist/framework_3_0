@@ -1,0 +1,7 @@
+.tabs-content.recommended__tabs
+	each item in recommendData
+		.tabs-content__item.tabs-page.js-tabs-page(class={ 'js-tabs-page--open': item.opened === true }, data-page=`${item.id}`)
+			.tabs-page__slider.tab-slider
+				.tab-slider__inner
+					each good in item.content
+						+card(good)

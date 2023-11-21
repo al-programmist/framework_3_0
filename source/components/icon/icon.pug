@@ -1,0 +1,7 @@
+mixin icon(name, options = {})
+	-
+		type = options.type || 'mono';
+
+	i.icon(
+		class= `icon--${type}-${name}`
+	)&attributes(attributes)

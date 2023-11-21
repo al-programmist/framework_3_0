@@ -1,0 +1,8 @@
+mixin checkoutPickupItem(item = {}, settings = {})
+	#{settings.tag || 'label'}.checkout-pickup-item(data-address= `г. Москва, ${item.address}`)&attributes(attributes)
+		input(type='radio' name='checkout-pickup-item' value='checkout-pickup-item-2').checkout-pickup-item__radio
+		.checkout-pickup-item__title !{item.name}
+		.checkout-pickup-item__schedule !{item.schedule}
+		.checkout-pickup-item__address !{item.address}
+		button(type='button').checkout-pickup-item__button.button
+			span.button__caption Забрать тут

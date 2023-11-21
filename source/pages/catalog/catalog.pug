@@ -1,0 +1,19 @@
+extends ../../config/pug/layout
+
+include ../../components/breadcrumbs/breadcrumbs
+
+block append config
+	-
+		pageName = 'Каталог - товары';
+
+		style = 'style-catalog';
+		scripts = ['script-catalog'];
+
+block variables
+	include ../../data/breabcrumbs/catalog
+
+block main
+	+breadcrumbs(breadcrumbsCatalog)
+
+	.container
+		h1.title.page__title Заголовок каталога

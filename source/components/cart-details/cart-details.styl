@@ -1,0 +1,90 @@
+.cart-details
+	display: grid
+	gap: 16px
+	padding: 20px 12px
+
+	border-radius: 8px
+	box-shadow: var(--shadow-1)
+
+	+media-interval(tablet, laptop)
+		grid-template-rows: repeat(2, auto) 1fr
+		grid-template-columns:  minmax(auto, 300px) minmax(auto, 250px)
+		justify-content: space-between
+
+	&__title
+		font-weight: 600
+		font-size: 24px
+
+		+media-interval(tablet, laptop)
+			grid-row: 1/2;
+			grid-column: 1/2
+
+	&__properties
+		display: grid
+		grid-template-columns: repeat(2, auto)
+		gap: 12px
+		align-items: baseline
+		+media-interval(tablet, laptop)
+			align-self start
+			grid-row: 2/4;
+			grid-column: 1/2
+			gap 10px
+
+	&__property-name
+		font-size: 14px
+
+	&__property-value
+		display: flex
+		gap: 8px
+		justify-content: end
+
+		font-weight: 600
+		font-size: 16px
+		text-align: right
+
+		strong
+			color: #ED1C24;
+			font-weight: 700
+
+	&__total
+		display: flex
+		align-items: baseline
+		justify-content: space-between
+		padding-top: 16px
+
+		font-weight: 700
+
+		border-top: 1px solid var(--color-option-dark-gray)
+
+		+media-interval(tablet, laptop)
+			grid-row: 1/2
+			grid-column: 2/3
+			padding-top: 0
+
+			border-top: none
+
+	&__total-title
+		font-size: 18px
+
+	&__total-value
+		font-size: 24px
+
+	&__field
+		+media-interval(tablet, laptop)
+			grid-row: 2/3;
+			grid-column: 2/3
+		& .field__input:not(:focus)
+			border: none
+			box-shadow: var(--shadow-1)
+		& .field__placeholder .required
+			display inline
+			margin-left 3px
+		.error-message:empty
+			display none
+	&__submit
+		width: 100%
+		max-width: none
+
+		+media-interval(tablet, laptop)
+			grid-row: 3/4;
+			grid-column: 2/3

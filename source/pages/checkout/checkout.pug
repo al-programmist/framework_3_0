@@ -1,0 +1,120 @@
+extends ../../config/pug/layout
+
+include /components/button-back/button-back
+include /components/checkout-delivery/checkout-delivery
+include /components/checkout-payment/checkout-payment
+include /components/checkout-details/checkout-details
+include /components/checkout-address/checkout-address
+include /components/checkout-pickup/checkout-pickup
+include /components/modal/modal-delivery/modal-delivery
+include /components/modal/modal-login/modal-login
+
+block append config
+	-
+		pageName = 'Оформление заказа';
+		bodyClass = 'checkout'
+		style = 'style-checkout';
+		scripts = ['script-checkout'];
+
+block main
+	.container
+		+buttonBack().page__section Назад в корзину
+		h1.title.page__title Оформление заказа
+		.checkout-layout.js-checkout-layout.page__section
+			.checkout-layout__block.checkout-layout__block--delivery
+				h2.checkout-layout__subtitle Выберите способ получения
+				+checkoutDelivery({
+					title: 'Адресная доставка',
+					description: 'Наша служба доставки привезет заказ домой, офис или на дачу',
+					type: 'shipping'
+				}).js-checkout-delivery
+				+checkoutDelivery({
+					title: 'Самовывоз',
+					description: 'Заберите заказ из ближайшего магазина без ожидания курьера',
+					type: 'self'
+				}).js-checkout-delivery
+			.checkout-layout__block.checkout-layout__block--buyer
+				h2.checkout-layout__subtitle Покупатель
+				.checkout-tabs.js-tabs
+					.checkout-tabs__labels
+						button.checkout-tabs__label.js-tabs-caption.js-active(type="button" data-target="1") Физ. лицо
+						button.checkout-tabs__label.js-tabs-caption(type="button" data-target="2") Юр.лицо / ИП
+					.checkout-tabs__contents
+						form.js-checkout-buyer.js-form.checkout-tabs__content.tabs-page.js-tabs-page.js-active(data-page="1" data-buyer='person')
+							+field('text', 'name', true, '', 'ФИО', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--buyer
+							+field('email', 'email', true, '', 'E-mail', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--buyer
+							+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99', true, false).checkout-layout__field.required.checkout-field.checkout-field--buyer
+							+checkbox('Заказ получит другой человек', 'checkbox', false,  false, false, false).checkout-layout__field.checkout-layout__field--wide.checkout-layout__another-person
+							+field('text', 'name', true, '', 'ФИО', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+							+field('email', 'email', true, '', 'E-mail', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+							+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+						form.js-checkout-buyer.js-form.checkout-tabs__content.tabs-page.js-tabs-page(data-page="2" data-buyer='company')
+							+field('text', 'company', true, '', 'Наименование компании или ИНН', '', false, false).checkout-layout__field.checkout-layout__field--wide.required.checkout-field.checkout-field--organization
+							dl.checkout-layout__organization.checkout-organization
+								dt.checkout-organization__name ИНН:
+								dd.checkout-organization__value 503105527650
+								dt.checkout-organization__name КПП:
+								dd.checkout-organization__value 503105527650
+								dt.checkout-organization__name Юр. адрес:
+								dd.checkout-organization__value 140002 ОБЛАСТЬ МОСКОВСКАЯ ГОРОД ЛЮБЕРЦЫ УЛИЦА КОЛХОЗНАЯ д. ДОМ 19-А помещение ЭТ/ПОМ/ОФ 03/I/3
+							+field('text', 'name', true, '', 'ФИО', '', true, false).checkout-layout__field.required.checkout-field
+							+field('email', 'email', true, '', 'E-mail', '', true, false).checkout-layout__field.required.checkout-field
+							+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99', true, false).checkout-layout__field.required.checkout-field
+							+checkbox('Заказ получит другой человек', 'checkbox', false,  false, false, false).checkout-layout__field.checkout-layout__field--wide.checkout-layout__another-person
+							+field('text', 'name', true, '', 'ФИО', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+							+field('email', 'email', true, '', 'E-mail', '', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+							+field('tel', 'phone', true, '', 'Телефон', '+7 (999) 999-99-99', true, false).checkout-layout__field.required.checkout-field.checkout-field--another-person
+			.checkout-layout__block.checkout-layout__block--payment
+				h2.checkout-layout__subtitle Способ оплаты
+				+checkoutPayment({
+					title: 'Онлайн',
+					description: 'После звонка менеджера',
+					type: 'online',
+					delivery: 'shipping',
+					buyer: 'person',
+				}).js-checkout-payment
+				+checkoutPayment({
+					title: 'Онлайн рассрочка',
+					description: 'Всегда.Да',
+					type: 'instalment',
+					delivery: 'shipping',
+					buyer: 'person',
+				}).js-checkout-payment
+				+checkoutPayment({
+					title: 'Наличными или картой ',
+					description: 'При получении в магазине ',
+					type: 'cash',
+					delivery: 'self',
+					buyer: 'person',
+				}).js-checkout-payment
+				+checkoutPayment({
+					title: 'Счет на оплату',
+					description: 'Придет после звонка менеджера',
+					type: 'invoice',
+					delivery: 'shipping self',
+					buyer: 'company',
+				}).js-checkout-payment
+			.checkout-layout__block.checkout-layout__block--comment
+				h2.checkout-layout__subtitle Комментарий
+				+field('text', 'comment', false, '', 'Добавить комментарий', '', false, false).checkout-layout__field.js-checkout-comment.checkout-field
+			+checkoutDetails.checkout-layout__details.js-checkout-details
+			.checkout-layout__description
+				p *Нажимая кнопку, я даю согласие на обработку своих персональных данных в соответствии с законом №152-ФЗ «О персональных данных» от 27.07.2006 и принимаю условия Пользовательского соглашения
+				p **в личном кабинете, после подтверждения заказа менеджером 
+block modals
+	+modal('modal-message-success-login').modal-message--success-login
+		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
+	+modal('modal-callback').modal--callback
+		+modal-callback()
+	+modal('modal-login').modal--login.modal--login-step-request
+		+modal-login()
+	+modal('modal-message').modal-message--success-subscribe
+		+modal-message('Спасибо!', 'Ваша заявка принята.')
+	+modal('modal-cookies').modal-message--cookies
+		+modalCookies()
+	+modal('modal-city').modal--city
+		+modal-city()
+	+modalDelivery('delivery-shipping')
+		+checkoutAddress
+	+modalDelivery('delivery-self')
+		+checkoutPickup.js-checkout-pickup

@@ -1,0 +1,23 @@
+.card-button--orange
+
+	color: $color.option.orange
+
+	background-color: transparent
+	border: 2px solid @color
+
+
+	transition: color $transition.primary,
+					border-color $transition.primary,
+					background-color $transition.primary
+
+	+hover()
+		color: $color.primary-white
+
+		background-color: $color.option.orange
+		border-color: $color.option.orange
+
+	+active()
+		color: $color.primary-white
+
+		background-color: $color.option.orange
+		border-color: $color.option.orange

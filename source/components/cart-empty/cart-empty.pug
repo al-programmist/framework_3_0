@@ -1,0 +1,14 @@
+include ../cart-add-button/cart-add-button
+include ../cart-empty-input/cart-empty-input
+include ../../components/cart-empty-product/cart-empty-product
+
+mixin cartEmpty
+	.cart-empty.js-cart-empty&attributes(attributes)
+
+		.cart-empty__subtitle В корзине пока пусто
+		.cart-empty__description Начните путь с идеального.<br>Добавьте товар в корзину прямо сейчас.
+		+cartAddButton.cart-empty__button
+		+cartEmptyInput.cart-empty__input
+		.cart-empty__table: .cart-empty__table-inner
+			each item in cartProducts
+				+cartEmptyProduct(item).cart-empty__product

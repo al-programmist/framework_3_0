@@ -1,0 +1,28 @@
+mixin modal-feedback-form(data = [], options = {})
+	.modal-feedback&attributes(attributes)
+		.modal-feedback__title Обращение № 12345678 от 22.12.2023
+		.modal-feedback__body
+			.modal-feedback__descr Выскажите свое мнение, оставьте пожелание или претензию компании "Управдом". Внимательно заполните поля формы, не забудьте указать контактную информацию. Если обращение требует ответа, мы свяжемся с Вами в ближайшее время.
+			form(
+				class="modal-feedback__form js-form"
+				name="base"
+				action="#"
+				method="post"
+				enctype="application/x-www-form-urlencoded"
+				autocomplete="off"
+				novalidate="novalidate"
+			)
+				.modal-feedback__row
+					.modal-feedback__col
+						+field('text', 'name', true, '', 'Имя*', '', true, false).required
+					.modal-feedback__col
+						+field('tel', 'phone', true, '', 'Телефон*', '+7 999 999 99 99', true, false).required
+				.modal-feedback__row
+					.modal-feedback__col
+						+field('email', 'email', true, '', 'E-mail*', '', true, false).required
+					.modal-feedback__col
+						+field('text', 'name', true, '', 'Магазин*', '', true, false).required
+				+switch()
+					span.modal-feedback__label Я согласен(а) на обработку персональных данных
+				button(class="modal-feedback__button button button-to-busket" type="submit")
+					span.button__caption Отправить

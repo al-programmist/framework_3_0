@@ -1,0 +1,8 @@
+.recommended__categories.categories
+	each item in categories
+		a.categories__item.page-image.category(href=`${item.url}` title=`${item.name}`)
+			+picture(item.src, {
+				alt: '',
+				responsive: item.responsive,
+			})
+			span.category__caption #{item.name}

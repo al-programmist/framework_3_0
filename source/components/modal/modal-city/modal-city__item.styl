@@ -1,0 +1,23 @@
+.modal-city__item
+	position: relative
+
+	width: 100%
+
+	padding: 8px 0
+
+	text-align: left
+
+	border-radius: 3px
+
+	transition: background-color $transition.primary
+	
+	.error-message {
+		display: none
+	}
+	
+	&--group-leader
+		.radio__caption:first-letter
+			font-weight: 700
+
+	+hover()
+		background-color: $color.background.secondary-darken

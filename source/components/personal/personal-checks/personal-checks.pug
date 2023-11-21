@@ -1,0 +1,28 @@
+mixin personal-checks(data = [], options = {})
+	.personal-checks&attributes(attributes)
+		each block in data
+			-
+				block = {
+					label: block.label || '',
+					list: block.list || []
+				}
+
+			.personal-checks__block
+				.personal-checks__label= block.label
+				.personal-checks__list
+					each item in block.list
+						-
+							item = {
+								name: item.name || '',
+								date: item.date || '',
+								price: item.price || '',
+								active: item.active || false,
+							}
+
+						.personal-checks__item
+							.personal-checks__name= item.name
+							.personal-checks__text= item.date
+							.personal-checks__text= item.price
+							a(class="personal-checks__button" class={active: item.active} href="#")
+								span Скачать
+								+icon('check')
