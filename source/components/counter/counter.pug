@@ -1,7 +1,0 @@
-mixin counter(item = {})
-	.counter.js-counter(data-max= item.max data-min= item.min)&attributes(attributes)
-		button(type='button' data-type='dec').counter__button -
-		label.counter__block
-			span(contenteditable='plaintext-only').counter__editable !{item.value || 0}
-			input(type='number' value= item.value || 0 min= item.min max= item.max).counter__field
-		button(type='button' data-type='inc').counter__button +

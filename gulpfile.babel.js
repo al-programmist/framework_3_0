@@ -15,7 +15,7 @@ export const build = series(
 	clean,
 	parallel(
 		// fontsBuild,
-		copyBuild,
+		// copyBuild,
 		//----------------
 		// pugBuild,
 		// scriptsBuild,
@@ -29,7 +29,7 @@ export const dev = series(
 	serverStart,
 	parallel(
 		// fontsWatch,
-		copyWatch,
+		// copyWatch,
 		//------------
 		// pugWatch,
 		// scriptsWatch,

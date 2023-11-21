@@ -1,8 +1,0 @@
-.recommended__arrows.arrows
-	each item in recommendData
-		.arrows__group(class={ 'arrows__group--open': item.opened === true }, data-group=`${item.id}`)
-			button.button-control.button-control--slider.button-control--no-border(type="button")
-				+icon('l_arrow-left')
-
-			button.button-control.button-control--slider.button-control--no-border(type="button")
-				+icon('l_arrow-right')

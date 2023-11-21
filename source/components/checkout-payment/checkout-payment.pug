@@ -1,9 +1,0 @@
-mixin checkoutPayment(item)
-	-
-		attributes['data-delivery'] = item.delivery;
-		attributes['data-buyer'] = item.buyer;
-		attributes['data-type'] = item.type;
-	label(class= classes('checkout-payment', { [item.type]: true }))&attributes(attributes)
-		input(type='radio' name='checkout-payment').checkout-payment__input
-		.checkout-payment__title !{item.title}
-		p.checkout-payment__description !{item.description}

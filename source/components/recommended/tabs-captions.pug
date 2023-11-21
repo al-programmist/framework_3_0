@@ -1,4 +1,0 @@
-ul.tabs-header
-    each item in recommendData
-        li.tabs-header__item.js-tab-caption(class={'js-tabs-page--open': item.opened === true})
-            button.tabs__caption(type="button" data-target=`${item.id}`) #{item.name}

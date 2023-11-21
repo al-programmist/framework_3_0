@@ -4,10 +4,10 @@ import {
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import { serverReload } from './server';
-import { config } from '../config';
+import { config, sourcePath } from '../config';
 
 const copyBuild = () => (
-	src(config.copy.src, { base: './source/assets/' })
+	src(config.copy.src, { base: `${sourcePath}/assets/` })
 		.pipe(plumber({
 			errorHandler: notify.onError((error) => ({
 				title: 'Copy',

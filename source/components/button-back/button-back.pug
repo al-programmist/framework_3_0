@@ -1,8 +1,0 @@
-mixin buttonBack(settings= {})
-	-
-		settings.tag = settings.tag || 'a';
-		if (settings.tag === 'a') attributes.href = attributes.href || 'a';
-		if (settings.tag === 'button') attributes.type = attributes.type || 'button';
-
-	#{settings.tag}(class= classes('button-back', settings))&attributes(attributes)
-		block
