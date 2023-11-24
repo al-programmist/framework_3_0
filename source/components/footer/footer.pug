@@ -1,0 +1,19 @@
+//- footerType = ['minimal'|'default'|'empty']
+
+mixin footer(data)
+	if footerType !== 'empty'
+		footer.footer(class= footerType === 'minimal' ? 'footer--type-minimal': '')&attributes(attributes)
+			if headerType === 'minimal'
+				.container
+
+			else if footerType === 'default'
+				if (data.prolog)
+					.footer__prolog.subscribe
+						.container
+
+				.footer__main
+					.container
+
+				if (data.epilog)
+					.footer__epilog
+						.container

@@ -1,0 +1,19 @@
+//- headerType = ['minimal'|'default'|'empty']
+
+mixin header(data)
+	if headerType !== 'empty'
+		header.header(class= headerType === 'minimal' ? 'header--type-minimal': '')&attributes(attributes)
+			if headerType === 'minimal'
+				.container
+
+			else if headerType === 'default'
+				if (data.prolog)
+					.header__prolog.js-header-prolog
+						.container
+
+				.header__main
+					.container
+
+				if (data.epilog)
+					.header__epilog
+						.container

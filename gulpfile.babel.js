@@ -6,7 +6,7 @@ import { copyBuild, copyWatch } from './gulp/tasks/copy';
 import { favgenerate, favupdate } from "./gulp/tasks/favicon";
 import { spriteBuild, spriteWatch } from './gulp/tasks/sprites';
 import { imagesBuild, imagesWatch } from './gulp/tasks/images';
-// import { pugBuild, pugWatch } from './gulp/tasks/pug';
+import { pugBuild, pugWatch } from './gulp/tasks/pug';
 // import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
 import { config } from './gulp/config';
 
@@ -26,12 +26,12 @@ export const favicons = series(
 export const build = series(
 	clean,
 	parallel(
-		// fontsBuild,
+		fontsBuild,
 		// copyBuild,
 		// spriteBuild,
-		imagesBuild,
+		// imagesBuild,
+		pugBuild,
 		//----------------
-		// pugBuild,
 		// scriptsBuild,
 	),
 );
@@ -46,9 +46,11 @@ export const dev = series(
 		// fontsWatch,
 		// copyWatch,
 		// spriteWatch,
-		imagesWatch,
+		// imagesWatch,
+		pugWatch,
 		//------------
-		// pugWatch,
 		// scriptsWatch,
 	),
 );
+
+// TODO: Сделать: отдельную задачу на линтритование, запускать в связке с валидатором перед коммитом

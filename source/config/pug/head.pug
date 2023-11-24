@@ -16,12 +16,10 @@ head
 	meta(name="msapplication-config" content="./favicon/browserconfig.xml")
 	meta(name="theme-color" content="#ffffff")
 
-	link(rel="preload" href="./fonts/SegoeUI.woff2" as="font" type="font/woff2" crossorigin)
-	link(rel="preload" href="./fonts/SegoeUI-Bold.woff2" as="font" type="font/woff2" crossorigin)
-	link(rel="preload" href="./fonts/SegoeUI-SemiBold.woff2" as="font" type="font/woff2" crossorigin)
-	link(rel="preload" href="./fonts/SegoeUI-SemiLight.woff2" as="font" type="font/woff2" crossorigin)
-	link(rel="preload" href="./fonts/SegoeUI-Black.woff2" as="font" type="font/woff2" crossorigin)
-	link(rel="preload" href="./fonts/SegoeUI-Light.woff2" as="font" type="font/woff2" crossorigin)
+
+	each item in $fonts
+		link(rel="preload" href=`./fonts/${item}.woff2` as="font" type="font/woff2" crossorigin)
+		link(rel="preload" href=`./fonts/${item}.woff` as="font" type="font/woff" crossorigin)
 
 	link(rel="stylesheet" href="./css/style.min.css")
 

@@ -1,0 +1,11 @@
+mixin modal(id)
+	.modal(
+			id= id
+		)&attributes(attributes)
+		.modal__overlay.js-modal-close
+		.modal__body
+			button.modal__close.js-modal-close(type="button")
+				+icon('close')
+			.modal__content
+				if block
+					block

@@ -1,28 +1,16 @@
 extends ../../config/pug/layout
-include ../../components/modal/modal-login/modal-login
+
 block append config
 	-
 		pageName = 'Список страниц';
+		headerType = 'minimal';
+		footerType = 'minimal';
 
 block variables
 	-
 		const pages = {
 			'UI-Kit': 'ui-kit.html',
 			'Главная': 'main.html',
-			'Каталог': 'catalog.html',
-			'Корзина': 'cart.html',
-			'Корзина, пустая': 'cart--empty.html',
-			'Печать сметы': 'cart-print.html',
-			'Оформление заказа': 'checkout.html',
-			'Заказ успешно оформлен ': 'order-placed.html',
-			'ЛК Мои личные данные': 'personal-data.html',
-			'ЛК Уведомления (Пустая)': 'personal-notice--empty.html',
-			'ЛК Мои заказы': 'personal-orders.html',
-			'ЛК Мои заказы (Пустая)': 'personal-orders--empty.html',
-			'ЛК Электронные чеки': 'personal-checks.html',
-			'ЛК Электронные чеки (Пустая)': 'personal-checks--empty.html',
-			'ЛК Обратная связь': 'personal-feedback.html',
-			'ЛК Обратная связь (Пустая)': 'personal-feedback--empty.html'
 		}
 
 block main
@@ -31,16 +19,5 @@ block main
 			each href,name in pages
 				li
 					a(href= href)= name
-block modals
-	+modal('modal-login').modal--login.modal--login-step-request
-		+modal-login()
-	+modal('modal-callback').modal--callback
-		+modal-callback()
-	+modal('modal-city').modal--city
-		+modal-city()
-	+modal('modal-message').modal-message--success-subscribe
-		+modal-message('Спасибо!', 'Ваша заявка принята.')
-	+modal('modal-message-success-login').modal-message--success-login
-		+modal-message('Добро пожаловать!', 'Вы вошли в систему.')
-	+modal('modal-cookies').modal-message--cookies
-		+modalCookies()
+
+block append modals

@@ -1,0 +1,18 @@
+mixin modal-accepted(data)
+	-
+		data = {
+			title: data.title || '',
+			text: data.text || ''
+		}
+
+	.modal-accepted&attributes(attributes)
+		.modal-accepted__icon
+			+icon('check-alt')
+
+		.modal-accepted__title= data.title
+		.modal-accepted__text= data.text
+		button(
+			class="link link--color-primary link--type-dashed js-modal-close"
+			type="button"
+		)
+			span Закрыть

@@ -3,58 +3,37 @@ block config
 
 block variables
 
-include helpers
-
-include ../../components/microfield/microfield
-include ../../components/form/form
-include ../../components/city-history-item/city-history-item
-include ../../components/field/field
-include ../../components/radio/radio
-include ../../components/checkbox/checkbox
-include ../../components/search-panel/search-panel--mobile
-include ../../components/search-panel/search-panel
-include ../../components/picture/picture
-include ../../components/tip/tip
-include ../../components/icon/icon
-include ../../components/bit-button/bit-button
-include ../../components/phone/phone
-include ../../components/location/location
-include ../../components/socials/socials
-include ../../components/card/card
-include ../../components/card/card--inspiration
-include ../../components/mobile-navigation/mobile-navigation
-include ../../components/help/help-item
-include ../../components/co-working/coworker
-include ../../components/header/header
-include ../../components/footer/footer
-include ../../components/up-button/up-button
-include ../../components/cookie/cookie
-include ../../components/modal/modal
-include ../../components/modal/modal-cookies/modal-cookies
-include ../../components/modal/modal-city/modal-city
-include ../../components/modal/modal-callback/modal-callback
-include ../../components/modal/modal-message/modal-message
-include ../../components/modal/modal-message-success-login/modal-message-success-login
-
+block includes
+	include ../../components/_common/_common
 
 doctype html
 html(lang="ru")
 	include head
 
-	body(class=bodyClass, data-busket="0" data-favourites="0" data-city="msk")
-		+mobileNavigation('fixed')
+	body(class=bodyClass)
 		.page
-			+header()
-			include ../../components/header-catalog/header-catalog
-			include ../../components/mobile-search/mobile-search
-			include ../../components/mobile-catalog/mobile-catalog
+			+header({
+				prolog: true,
+				epilog: true,
+			}).page__header
 
 			main.page__content
 				block main
-			+footer().page__footer
-			+upButton()
-			+cookie()
+
+			+footer({
+				prolog: true,
+				epilog: true,
+			}).page__header
+
 		block modals
+			.modals(aria-hidden="true")
+				+modal('modal-accepted')
+					+modal-accepted({
+						title: 'Заголовок модалки',
+						text: 'Это большой-большой текст соообщения модалки'
+					})
+				+modal("modal-subscribe-success")
+					+modal-subscribe-success()
 
 		block scripts
 			script(defer src="./js/script.min.js")
