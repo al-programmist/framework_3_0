@@ -3,7 +3,7 @@ import { clean } from './gulp/tasks/clean';
 import { serverStart } from './gulp/tasks/server';
 import { fontsBuild, fontsWatch } from './gulp/tasks/fonts';
 import { copyBuild, copyWatch } from './gulp/tasks/copy';
-import { favgenerate, favupdate } from "./gulp/tasks/favicon";
+import { favgenerate, favupdate } from './gulp/tasks/favicon';
 import { spriteBuild, spriteWatch } from './gulp/tasks/sprites';
 import { imagesBuild, imagesWatch } from './gulp/tasks/images';
 import { pugBuild, pugWatch } from './gulp/tasks/pug';
@@ -17,8 +17,8 @@ config.setEnv();
  */
 export const favicons = series(
 	favupdate,
-	favgenerate
-)
+	favgenerate,
+);
 
 /**
  * Сборка билда
@@ -26,13 +26,12 @@ export const favicons = series(
 export const build = series(
 	clean,
 	parallel(
-		// fontsBuild,
-		// copyBuild,
-		// spriteBuild,
-		// imagesBuild,
+		fontsBuild,
+		copyBuild,
+		spriteBuild,
+		imagesBuild,
 		pugBuild,
-		//----------------
-		// scriptsBuild,
+		scriptsBuild,
 	),
 );
 
@@ -43,13 +42,12 @@ export const dev = series(
 	build,
 	serverStart,
 	parallel(
-		// fontsWatch,
-		// copyWatch,
-		// spriteWatch,
-		// imagesWatch,
+		fontsWatch,
+		copyWatch,
+		spriteWatch,
+		imagesWatch,
 		pugWatch,
-		//------------
-		// scriptsWatch,
+		scriptsWatch,
 	),
 );
 

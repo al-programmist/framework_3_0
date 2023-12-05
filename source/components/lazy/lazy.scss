@@ -1,0 +1,28 @@
+.lazy {
+	--loader-gradient: linear-gradient(120deg, #F7F9FC 30%, #EDF1F7 38%, #EDF1F7 40%, #F7F9FC 48%);
+
+	position: relative;
+	display: inline-block;
+
+	&::before {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+
+		background: var(--loader-gradient) 100% 0;
+		background-size: 200% 100%;
+		animation: load 2s infinite;
+		content: '';
+
+		img {
+			position: relative;
+			z-index: 2;
+		}
+	}
+}
+
+@keyframes load {
+	100% {
+		background-position: -100% 0;
+	}
+}

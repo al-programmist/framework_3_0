@@ -9,11 +9,6 @@ export const webpackConfig = {
 		'script': './index/script.js',
 		'script-ui-kit': './ui-kit/script-ui-kit.js',
 		'script-main': './main/script-main.js',
-		'script-catalog': './catalog/script-catalog.js',
-		'script-cart': './cart/script-cart.js',
-		'script-checkout': './checkout/script-checkout.js',
-		'script-order-placed': './order-placed/script-order-placed.js',
-		'script-personal': './personal/script-personal.js',
 	},
 	output: {
 		filename: '[name].min.js',
