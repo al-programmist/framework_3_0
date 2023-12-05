@@ -7,7 +7,6 @@ import pug from 'gulp-pug';
 import rename from 'gulp-rename';
 import pugLinter from 'gulp-pug-linter';
 import pugLintStylish from 'puglint-stylish';
-import {htmlValidator} from "gulp-w3c-html-validator";
 import { serverReload } from './server';
 import { config, sourcePath } from '../config';
 

@@ -7,7 +7,7 @@ import { favgenerate, favupdate } from "./gulp/tasks/favicon";
 import { spriteBuild, spriteWatch } from './gulp/tasks/sprites';
 import { imagesBuild, imagesWatch } from './gulp/tasks/images';
 import { pugBuild, pugWatch } from './gulp/tasks/pug';
-// import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
+import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
 import { config } from './gulp/config';
 
 config.setEnv();
@@ -26,7 +26,7 @@ export const favicons = series(
 export const build = series(
 	clean,
 	parallel(
-		fontsBuild,
+		// fontsBuild,
 		// copyBuild,
 		// spriteBuild,
 		// imagesBuild,
