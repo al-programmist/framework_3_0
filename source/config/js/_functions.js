@@ -1,26 +1,16 @@
-// Определение ширины экрана
-import { isMobile, isTablet, isLaptop, isSemi, isDesktop, isFHD } from './functions/check-viewport';
+// import { media } from './functions/media';
+// import { throttle } from './functions/throttle';
+import { deviceViewportWatcher } from './functions/set-device-viewport-watcher';
+import { setScrollResizeWatchers } from './functions/set-scroll-resize-watchers';
 
-if (isMobile()) {
-	console.log('mobile');
-}
+// Простой медиазапрос
+// media('all and (min-width: 768px) and (max-width: 1024px)', () => {
+// 	console.log('in range!');
+// });
 
-if (isTablet()) {
-	console.log('tablet');
-}
-
-if (isLaptop()) {
-	console.log('laptop');
-}
-
-if (isSemi()) {
-	console.log('semi');
-}
-
-if (isDesktop()) {
-	console.log('desktop');
-}
-
-if (isFHD()) {
-	console.log('fhd');
-}
+window.addEventListener('DOMContentLoaded', () => {
+	// Детектирование мобильных устройств, передача ширины и высоты вьюпорта в CSS-переменную
+	deviceViewportWatcher();
+	// Наблюдатель за прогрессом прокруткой и изменением размера, толкает в CSS-переменные
+	setScrollResizeWatchers();
+});

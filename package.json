@@ -44,6 +44,7 @@
 		"gulp-ttf2woff2": "^4.0.1",
 		"gulp-webp": "^4.0.1",
 		"lint-staged": "^13.1.2",
+		"ninelines-ua-parser": "^1.1.6",
 		"pug-lint": "^2.6.0",
 		"puglint-stylish": "^1.1.0",
 		"stylelint": "^15.11.0",
