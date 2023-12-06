@@ -1,5 +1,3 @@
-import {body} from '../_config';
-
 /**
  * Функция recalculateProgress будет пересчитывать,
  * какую часть страницы пользователь уже успел прочесть.
@@ -16,6 +14,6 @@ export const recalculateProgress = () => {
 		progress = 100;
 	}
 
-	body.style.setProperty('--viewport-current-position-y', `${currentPositionY}px`);
-	body.style.setProperty('--viewport-progress-y', `${progress}%`);
+	document.querySelector(':root').style.setProperty('--viewport-current-position-y', `${currentPositionY}px`);
+	document.querySelector(':root').style.setProperty('--viewport-progress-y', `${progress}%`);
 };

@@ -4,7 +4,7 @@
  * должна идти в паре со стандартным медиазапросом.
  */
 
-import { config, body, win } from '../_config';
+import { config, win } from '../_config';
 import { media } from './media';
 
 const { breakpoint } = config;
@@ -13,8 +13,8 @@ const setParameters = (width, height) => {
 	let currentVieportWidth = Math.ceil(width);
 	let currentVieportHeight = Math.ceil(height);
 
-	body.style.setProperty('--viewport-height', `${currentVieportHeight}px`);
-	body.style.setProperty('--viewport-width', `${currentVieportWidth}px`);
+	document.querySelector(':root').style.setProperty('--viewport-height', `${currentVieportHeight}px`);
+	document.querySelector(':root').style.setProperty('--viewport-width', `${currentVieportWidth}px`);
 };
 
 const viewportHandler = (event) => {
@@ -31,8 +31,8 @@ const setDevicesVieportWatcher = () => {
 };
 
 const removeDevicesVieportWatcher = () => {
-	body.style.removeProperty('--viewport-width');
-	body.style.removeProperty('--viewport-height');
+	document.querySelector(':root').style.removeProperty('--viewport-width');
+	document.querySelector(':root').style.removeProperty('--viewport-height');
 	visualViewport.removeEventListener('resize', viewportHandler);
 };
 

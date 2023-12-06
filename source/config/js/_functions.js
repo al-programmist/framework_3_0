@@ -2,6 +2,7 @@
 import { deviceViewportWatcher } from './functions/set-device-viewport-watcher';
 import { setScrollResizeWatchers } from './functions/set-scroll-resize-watchers';
 import { disableIosScaling } from './functions/disable-ios-scaling';
+import { getHeaderHeight } from './functions/header-height';
 
 window.addEventListener('DOMContentLoaded', () => {
 	// Детектирование мобильных устройств, передача ширины и высоты вьюпорта в CSS-переменную
@@ -10,6 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	setScrollResizeWatchers();
 	// Отключаем увеличение в IOS по дабл-тапу
 	disableIosScaling();
+	// Вычисляем высоту шапки
+	getHeaderHeight();
 });
 
 // TODO: Создать мок-объект сервера: https://doka.guide/js/debounce/
