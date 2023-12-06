@@ -5,7 +5,6 @@ export const config = {
 		laptop: 992,
 		semi: 1024,
 		desktop: 1280,
-		notebook: 1366,
 		large: 1920,
 	},
 };

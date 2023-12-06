@@ -7,6 +7,7 @@ import pug from 'gulp-pug';
 import rename from 'gulp-rename';
 import pugLinter from 'gulp-pug-linter';
 import pugLintStylish from 'puglint-stylish';
+import htmlBemValidator from 'gulp-html-bem-validator';
 import { serverReload } from './server';
 import { config, sourcePath } from '../config';
 
@@ -27,6 +28,7 @@ const pugBuild = () => (
 			pretty: true,
 			venbose: true,
 		}))
+		.pipe(htmlBemValidator())
 		.pipe(rename({
 			dirname: '',
 		}))

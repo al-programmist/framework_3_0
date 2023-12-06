@@ -73,13 +73,13 @@ export const faviconConfig = {
 		ios: {
 			pictureAspect: 'backgroundAndMargin',
 			backgroundColor: '#ffffff',
-			margin: '21%'
+			margin: '21%',
 		},
 		desktopBrowser: {},
 		windows: {
 			pictureAspect: 'whiteSilhouette',
 			backgroundColor: '#da532c',
-			onConflict: 'override'
+			onConflict: 'override',
 		},
 		androidChrome: {
 			pictureAspect: 'shadow',
@@ -88,18 +88,18 @@ export const faviconConfig = {
 				name: 'Terminator',
 				display: 'browser',
 				orientation: 'notSet',
-				onConflict: 'override'
-			}
+				onConflict: 'override',
+			},
 		},
 		safariPinnedTab: {
 			pictureAspect: 'silhouette',
-			themeColor: '#5bbad5'
-		}
+			themeColor: '#5bbad5',
+		},
 	},
 	settings: {
 		compression: 5,
 		scalingAlgorithm: 'Mitchell',
-		errorOnImageTooSmall: false
+		errorOnImageTooSmall: false,
 	},
-	markupFile: `${sourcePath}/assets/favicon.json`
-}
+	markupFile: `${sourcePath}/assets/favicon.json`,
+};

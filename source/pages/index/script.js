@@ -1,9 +1,7 @@
-window.app = {};
-
 // Сюда цепляем все компоненты
-import '../../config/js/config';
-import { components } from "../../components/_common/_common";
+import '../../config/js/_config';
+import '../../config/js/_functions';
 
 window.addEventListener('DOMContentLoaded', () => {
-	components();
+
 });

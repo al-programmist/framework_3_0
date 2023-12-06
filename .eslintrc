@@ -123,7 +123,6 @@
 		"block-scoped-var": "error",
 		"class-methods-use-this": "error",
 		"complexity": "off",
-		"consistent-return": "error",
 		"curly": [
 			"error",
 			"all"
