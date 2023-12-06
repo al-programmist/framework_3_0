@@ -1,3 +1,4 @@
+// import { isArray } from './functions/helpers';
 import { deviceViewportWatcher } from './functions/set-device-viewport-watcher';
 import { setScrollResizeWatchers } from './functions/set-scroll-resize-watchers';
 

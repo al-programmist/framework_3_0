@@ -1,4 +1,12 @@
 /* eslint-disable */
+/**
+ * Следит за изменением класса на заданном селекторе, при изменении класса запускает коллбеки появления
+ * и удаления класса
+ *
+ * Usage:
+ * const telClassObserver = new ClassWatcher(tel, 'js-valid', this.#activateButton, this.#deactivateButton);
+ */
+
 export class ClassWatcher {
 	#targetNode;
 	#classToWatch;
