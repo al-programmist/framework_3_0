@@ -4,7 +4,9 @@
 
 @mixin font-face($font-family, $url, $weight, $style) {
 	@font-face {
-		src: url("../fonts/#{$url}.woff2") format("woff2");
+		src:
+			url("../fonts/#{$url}.woff2") format("woff2"),
+			url("../fonts/#{$url}.woff") format("woff");
 		font-family: "#{$font-family}";
 		font-weight: #{$weight};
 		font-style: $style;
@@ -65,32 +67,6 @@
 	}
 }
 
-/*stylelint-disable*/
-
-@mixin placeholder {
-	&::input-placeholder {
-		@content;
-	}
-
-	&::placeholder {
-		@content;
-	}
-
-	&:input-placeholder {
-		@content;
-	}
-
-	&:placeholder {
-		@content;
-	}
-
-	&::placeholder {
-		@content;
-	}
-}
-
-/*stylelint-enable*/
-
 @mixin media($min, $max) {
 	@media all and (min-width: map.get($breakpoint, $min)) and (max-width: map.get($breakpoint, $max) - 1) {
 		@content;
@@ -105,6 +81,12 @@
 
 @mixin media-min($min) {
 	@media all and (min-width: map.get($breakpoint, $min)) {
+		@content;
+	}
+}
+
+@mixin mobile() {
+	@include media-max("tablet") {
 		@content;
 	}
 }
@@ -138,3 +120,74 @@
 		@content;
 	}
 }
+
+@mixin hardware($backface: true, $perspective: 1000) {
+	perspective: $perspective;
+
+	@if $backface {
+		backface-visibility: hidden;
+	}
+}
+
+/*
+Анимация через keyframes
+Usage:
+@include keyframes(background) {
+   0% {
+     background: white;
+   }
+   50% {
+     background: lightblue;
+   }
+   100% {
+     background: royalblue;
+   }
+}
+ */
+
+@mixin keyframes($name) {
+	@keyframes #{$name} {
+		@content;
+	}
+
+	@keyframes #{$name} {
+		@content;
+	}
+
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// Обрезка длинного текста с многоточием
+@mixin text-shorten {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/*stylelint-disable*/
+
+@mixin placeholder {
+	&::input-placeholder {
+		@content;
+	}
+
+	&::placeholder {
+		@content;
+	}
+
+	&:input-placeholder {
+		@content;
+	}
+
+	&:placeholder {
+		@content;
+	}
+
+	&::placeholder {
+		@content;
+	}
+}
+
+/*stylelint-enable*/

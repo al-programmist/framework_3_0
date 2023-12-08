@@ -28,12 +28,12 @@ export const build = series(
 	clean,
 	parallel(
 		fontsBuild,
-		// copyBuild,
-		// spriteBuild,
+		copyBuild,
+		spriteBuild,
 		// imagesBuild,
 		pugBuild,
-		// scriptsBuild,
 		stylesBuild,
+		scriptsBuild,
 	),
 );
 
@@ -44,13 +44,13 @@ export const dev = series(
 	build,
 	serverStart,
 	parallel(
-		// fontsWatch,
-		// copyWatch,
-		// spriteWatch,
+		fontsWatch,
+		copyWatch,
+		spriteWatch,
 		// imagesWatch,
 		pugWatch,
-		// scriptsWatch,
 		stylesWatch,
+		scriptsWatch,
 	),
 );
 
