@@ -36,6 +36,12 @@ export const config = {
 		webpackSrc: `${sourcePath}/pages`,
 	},
 
+	styles: {
+		src: `${sourcePath}/pages/**/*.scss`,
+		dest: `${destPath}/css`,
+		watch: `${sourcePath}/**/*.scss`,
+	},
+
 	sprite: {
 		src: `${sourcePath}/assets/icons/`,
 		dest: `${destPath}/images`,

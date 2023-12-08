@@ -582,7 +582,7 @@
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "function-whitespace-after": "always",
-    "indentation": 2,
+    "indentation": "tab",
     "keyframe-declaration-no-important": true,
     "length-zero-no-unit": true,
     "max-empty-lines": 1,

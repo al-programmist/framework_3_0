@@ -1,0 +1,140 @@
+@use "sass:map";
+
+@import "config";
+
+@mixin font-face($font-family, $url, $weight, $style) {
+	@font-face {
+		src: url("../fonts/#{$url}.woff2") format("woff2");
+		font-family: "#{$font-family}";
+		font-weight: #{$weight};
+		font-style: $style;
+		font-display: swap;
+	}
+}
+
+@mixin hover {
+	@media (any-hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+@mixin touch {
+	@media (pointer: coarse) {
+		@content;
+	}
+}
+
+@mixin icon($icon-name, $sprite-type: "mono", $type: "before") {
+	&::#{$type} {
+		content: "";
+		display: inline-block;
+
+		@if $sprite-type == "mono" {
+			-webkit-mask-image: url("../images/sprite-" + $sprite-type + ".svg#" + $icon-name);
+			mask-image: url("../images/sprite-" + $sprite-type + ".svg#" + $icon-name);
+			-webkit-mask-position: center;
+			mask-position: center;
+			-webkit-mask-repeat: no-repeat;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: cover;
+			mask-size: cover;
+			background-color: currentcolor;
+		} @else {
+			background-image: url("../images/sprite-" + $sprite-type + ".svg#" + $icon-name);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-color: var(--transparent);
+		}
+	}
+}
+
+@mixin before() {
+	content: "";
+	display: inline-block;
+
+	@content;
+}
+
+@mixin pseudo($type: "before") {
+	&::#{$type} {
+		content: "";
+		display: inline-block;
+	}
+}
+
+/*stylelint-disable*/
+
+@mixin placeholder {
+	&::input-placeholder {
+		@content;
+	}
+
+	&::placeholder {
+		@content;
+	}
+
+	&:input-placeholder {
+		@content;
+	}
+
+	&:placeholder {
+		@content;
+	}
+
+	&::placeholder {
+		@content;
+	}
+}
+
+/*stylelint-enable*/
+
+@mixin media($min, $max) {
+	@media all and (min-width: map.get($breakpoint, $min)) and (max-width: map.get($breakpoint, $max) - 1) {
+		@content;
+	}
+}
+
+@mixin media-max($max) {
+	@media all and (max-width: map.get($breakpoint, $max)) {
+		@content;
+	}
+}
+
+@mixin media-min($min) {
+	@media all and (min-width: map.get($breakpoint, $min)) {
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@include media-min("tablet") {
+		@content;
+	}
+}
+
+@mixin laptop() {
+	@include media-min("laptop") {
+		@content;
+	}
+}
+
+@mixin semi() {
+	@include media-min("semi") {
+		@content;
+	}
+}
+
+@mixin desktop() {
+	@include media-min("desktop") {
+		@content;
+	}
+}
+
+@mixin hdtv() {
+	@include media-min("large") {
+		@content;
+	}
+}

@@ -9,6 +9,7 @@ import { imagesBuild, imagesWatch } from './gulp/tasks/images';
 import { pugBuild, pugWatch } from './gulp/tasks/pug';
 import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
 import { config } from './gulp/config';
+import { stylesBuild, stylesWatch } from './gulp/tasks/styles';
 
 config.setEnv();
 
@@ -27,11 +28,12 @@ export const build = series(
 	clean,
 	parallel(
 		fontsBuild,
-		copyBuild,
-		spriteBuild,
-		imagesBuild,
+		// copyBuild,
+		// spriteBuild,
+		// imagesBuild,
 		pugBuild,
-		scriptsBuild,
+		// scriptsBuild,
+		stylesBuild,
 	),
 );
 
@@ -42,12 +44,13 @@ export const dev = series(
 	build,
 	serverStart,
 	parallel(
-		fontsWatch,
-		copyWatch,
-		spriteWatch,
-		imagesWatch,
+		// fontsWatch,
+		// copyWatch,
+		// spriteWatch,
+		// imagesWatch,
 		pugWatch,
-		scriptsWatch,
+		// scriptsWatch,
+		stylesWatch,
 	),
 );
 
