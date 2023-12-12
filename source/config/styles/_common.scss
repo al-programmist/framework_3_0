@@ -1,0 +1,83 @@
+.visually-hidden,
+.visually-hidden:not(:focus):not(:active),
+[data-hidden],
+[hidden] {
+	position: absolute;
+	z-index: -9999999;
+	-webkit-clip-path: inset(100%);
+	clip-path: inset(100%);
+	overflow: hidden;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	clip: rect(0 0 0 0);
+}
+
+[class*="--resizable"] {
+	overflow: auto;
+	max-width: 100%;
+	resize: both;
+}
+
+[class*="--mobile-only"] {
+	@include tablet {
+		display: none;
+	}
+}
+
+[class*="--tablet-only"] {
+	@include mobile {
+		display: none;
+	}
+
+	@include laptop {
+		display: none;
+	}
+}
+
+[class*="--laptop-only"] {
+	@include tablet {
+		display: none;
+	}
+
+	@include semi {
+		display: none;
+	}
+}
+
+[class*="--semi-only"] {
+	@include laptop {
+		display: none;
+	}
+
+	@include desktop {
+		display: none;
+	}
+}
+
+[class*="--desktop-only"] {
+	@include semi {
+		display: none;
+	}
+
+	@include hdtv {
+		display: none;
+	}
+}
+
+[class*="--hdtv-only"] {
+	@include media-max("large") {
+		display: none;
+	}
+}
+
+[class*="--devices-only"] {
+	@include desktop {
+		display: none;
+	}
+}

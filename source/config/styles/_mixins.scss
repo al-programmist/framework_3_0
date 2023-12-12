@@ -1,6 +1,10 @@
+@use "sass:math";
 @use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
 
-@import "config";
+@import "functions";
 
 @mixin font-face($font-family, $url, $weight, $style) {
 	@font-face {
@@ -53,71 +57,10 @@
 	}
 }
 
-@mixin before() {
-	content: "";
-	display: inline-block;
-
-	@content;
-}
-
 @mixin pseudo($type: "before") {
 	&::#{$type} {
 		content: "";
 		display: inline-block;
-	}
-}
-
-@mixin media($min, $max) {
-	@media all and (min-width: map.get($breakpoint, $min)) and (max-width: map.get($breakpoint, $max) - 1) {
-		@content;
-	}
-}
-
-@mixin media-max($max) {
-	@media all and (max-width: map.get($breakpoint, $max)) {
-		@content;
-	}
-}
-
-@mixin media-min($min) {
-	@media all and (min-width: map.get($breakpoint, $min)) {
-		@content;
-	}
-}
-
-@mixin mobile() {
-	@include media-max("tablet") {
-		@content;
-	}
-}
-
-@mixin tablet() {
-	@include media-min("tablet") {
-		@content;
-	}
-}
-
-@mixin laptop() {
-	@include media-min("laptop") {
-		@content;
-	}
-}
-
-@mixin semi() {
-	@include media-min("semi") {
-		@content;
-	}
-}
-
-@mixin desktop() {
-	@include media-min("desktop") {
-		@content;
-	}
-}
-
-@mixin hdtv() {
-	@include media-min("large") {
-		@content;
 	}
 }
 
@@ -203,4 +146,154 @@ Usage:
 
 }
 
+///
+/// Wrapper mixin for the log function so it can be used with a more friendly
+/// API than `@if im-log('..') {}` or `$_: im-log('..')`. Basically, use the function
+/// within functions because it is not possible to include a mixin in a function
+/// and use the mixin everywhere else because it's much more elegant.
+///
+/// @param {String} $message - Message to log
+///
+@mixin log($message) {
+	@if im-log($message) {
+	}
+}
+
+///
+/// This mixin aims at redefining the configuration just for the scope of
+/// the call. It is helpful when having a component needing an extended
+/// configuration such as custom breakpoints (referred to as tweakpoints)
+/// for instance.
+///
+/// @author Kitty Giraudel
+///
+/// @param {Map} $tweakpoints [()] - Map of tweakpoints to be merged with `$breakpoints`
+/// @param {Map} $tweak-media-expressions [()] - Map of tweaked media expressions to be merged with `$media-expression`
+///
+/// @example scss - Extend the global breakpoints with a tweakpoint
+///  @include media-context(("custom": 678px)) {
+///    .foo {
+///      @include media(">phone", "<=custom") {
+///       // ...
+///      }
+///    }
+///  }
+///
+/// @example scss - Extend the global media expressions with a custom one
+///  @include media-context($tweak-media-expressions: ("all": "all")) {
+///    .foo {
+///      @include media("all", ">phone") {
+///       // ...
+///      }
+///    }
+///  }
+///
+/// @example scss - Extend both configuration maps
+///  @include media-context(("custom": 678px), ("all": "all")) {
+///    .foo {
+///      @include media("all", ">phone", "<=custom") {
+///       // ...
+///      }
+///    }
+///  }
+///
+@mixin media-context($tweakpoints: (), $tweak-media-expressions: ()) {
+	// Save global configuration
+	$global-breakpoints: $breakpoints;
+	$global-media-expressions: $media-expressions;
+
+	// Update global configuration
+	$breakpoints: map.merge($breakpoints, $tweakpoints) !global;
+	$media-expressions: map.merge($media-expressions, $tweak-media-expressions) !global;
+
+	// Restore global configuration
+	$breakpoints: $global-breakpoints !global;
+	$media-expressions: $global-media-expressions !global;
+
+	@content;
+}
+
+////
+/// include-media public exposed API
+///
+/// Generates a media query based on a list of conditions
+///
+/// @param {Arglist}   $conditions  - Media query conditions
+///
+/// @example scss - With a single set breakpoint
+///  @include media(">phone") { }
+///
+/// @example scss - With two set breakpoints
+///  @include media(">phone", "<=tablet") { }
+///
+/// @example scss - With custom values
+///  @include media(">=358px", "<850px") { }
+///
+/// @example scss - With set breakpoints with custom values
+///  @include media(">desktop", "<=1350px") { }
+///
+/// @example scss - With a static expression
+///  @include media("retina2x") { }
+///
+/// @example scss - Mixing everything
+///  @include media(">=350px", "<tablet", "retina3x") { }
+///
+
+@mixin media($conditions...) {
+	@if ($im-media-support and list.length($conditions) == 0) or
+		(not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
+		@content;
+	} @else if $im-media-support and list.length($conditions) > 0 {
+		@media #{string.unquote(parse-expression(list.nth($conditions, 1)))} {
+			// Recursive call
+			$sliced-conditions: slice($conditions, 2);
+
+			@include media($sliced-conditions...) {
+				@content;
+			}
+		}
+	}
+}
 /*stylelint-enable*/
+
+@mixin mobile {
+	@include media("<tablet") {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@include media(">=tablet") {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@include media(">=laptop") {
+		@content;
+	}
+}
+
+@mixin semi {
+	@include media(">=semi") {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@include media(">=desktop") {
+		@content;
+	}
+}
+
+@mixin hdtv {
+	@include media(">large") {
+		@content;
+	}
+}
+
+@mixin media-max($max) {
+	@include media("<=#{$max}") {
+		@content;
+	}
+}
