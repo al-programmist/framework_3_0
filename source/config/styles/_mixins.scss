@@ -169,11 +169,23 @@ Usage:
 /*stylelint-disable*/
 
 @mixin placeholder {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+
+	&::-moz-placeholder {
+		@content;
+	}
+
+	&:-moz-placeholder {
+		@content;
+	}
+
 	&::input-placeholder {
 		@content;
 	}
 
-	&::placeholder {
+	&:ms-input-placeholder {
 		@content;
 	}
 
@@ -181,13 +193,14 @@ Usage:
 		@content;
 	}
 
+	&::placeholder {
+		@content;
+	}
+
 	&:placeholder {
 		@content;
 	}
 
-	&::placeholder {
-		@content;
-	}
 }
 
 /*stylelint-enable*/

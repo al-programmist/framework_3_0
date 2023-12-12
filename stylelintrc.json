@@ -504,6 +504,7 @@
     "color-named": "never",
     "color-no-hex": null,
     "color-no-invalid-hex": true,
+		"color-function-notation": "legacy",
     "comment-empty-line-before": [
       "always",
       {
@@ -658,6 +659,7 @@
     "selector-max-type": null,
     "selector-max-universal": null,
     "selector-nested-pattern": null,
+		"selector-not-notation": "simple",
     "selector-no-qualifying-type": null,
     "selector-no-vendor-prefix": true,
     "selector-pseudo-class-case": "lower",
