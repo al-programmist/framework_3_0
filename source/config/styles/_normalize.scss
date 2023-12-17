@@ -1,3 +1,4 @@
+/*stylelint-disable*/
 html {
 	font-size: var(--font-base);
 	line-height: normal;
@@ -17,6 +18,13 @@ body {
 	text-align: left;
 	color: var(--body-color);
 	background-color: var(--body-bg);
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 *,
@@ -438,7 +446,6 @@ h6,
 	font-size: 1rem;
 }
 
-/*stylelint-disable*/
 @media print {
 	*,
 	*::before,
